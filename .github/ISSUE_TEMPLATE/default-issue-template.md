@@ -1,7 +1,7 @@
 ---
 name: Default Issue Template
 about: android instagram default issue template
-title: ''
+title: "[TAG] where / what"
 labels: ''
 assignees: ''
 
