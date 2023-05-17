@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Instagram" parent="">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?colorOnBackground</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    
+    <style name="AndKorTitle1" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AndKorTitle2" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AndKorBody1" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AndKorBody2" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AndKorBody3" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AndKorBody4" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AndKorBody5" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_regular</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="AndKorBody6" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_noto_sans_kr_medium</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="AndEngBody1" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_roboto_medium</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AndEngBody1_2" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_roboto_regular</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AndEngBody2" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AndEngBody3" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_roboto_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AndEngBody4" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/font_roboto_regular</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="AndNumber1" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AndNumber2" parent="TextAppearance.Instagram">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
