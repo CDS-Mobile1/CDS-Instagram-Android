@@ -1,5 +1,6 @@
 package com.sopt.instagram.data.model.response
 
+import com.sopt.instagram.domain.entity.ExampleEntity
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -17,4 +18,11 @@ data class ExampleResponseDto(
     val tmi2: String,
     @SerialName("tmi_3")
     val tmi3: String,
-)
+) {
+    // data model -> domain entity 변환 메서드
+    fun toExampleEntity() = ExampleEntity(
+        id = id,
+        title = title,
+        content = content,
+    )
+}
