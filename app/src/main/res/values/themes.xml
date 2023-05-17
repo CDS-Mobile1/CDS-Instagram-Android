@@ -18,6 +18,7 @@
         <item name="colorOnError">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Remove font padding. -->
         <item name="android:includeFontPadding">false</item>
     </style>
