@@ -1,7 +1,7 @@
 package com.sopt.instagram.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.sopt.instagram.R
 
 class MainActivity : AppCompatActivity() {
