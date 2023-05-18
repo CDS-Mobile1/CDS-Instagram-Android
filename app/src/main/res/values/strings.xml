@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Instagram</string>
+
+<!--    binding err-->
+    <string name="binding_error_msg">Binding not initialized to reference the view.</string>
 </resources>
