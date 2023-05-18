@@ -17,12 +17,13 @@ android {
 
     defaultConfig {
         applicationId "com.sopt.instagram"
-        minSdk 28
+//        minSdk 28
+        minSdk 24
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "BASE_URL", properties['base.url']
+//        buildConfigField "String", "BASE_URL", properties['base.url']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
