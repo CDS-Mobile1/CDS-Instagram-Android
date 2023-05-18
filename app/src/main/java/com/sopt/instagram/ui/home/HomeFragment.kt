@@ -5,25 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.FragmentHomeBinding
 import com.sopt.instagram.util.binding.BindingFragment
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initAdapter()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+    }
+
+    private fun initAdapter(){
+        binding.rvHomePost.adapter = PostAdapter().apply {
+            submitList(viewModel.mockPostList)
+        }
     }
 }
