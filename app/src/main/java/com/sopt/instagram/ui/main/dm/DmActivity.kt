@@ -1,9 +1,7 @@
-package com.sopt.instagram.ui.main
+package com.sopt.instagram.ui.main.dm
 
 import android.os.Bundle
 import com.sopt.instagram.R
-import com.sopt.instagram.data.model.response.DmResponseDTO
-import com.sopt.instagram.data.model.response.wrapper.BaseResponse
 import com.sopt.instagram.databinding.ActivityDmBinding
 import com.sopt.instagram.util.binding.BindingActivity
 
