@@ -9,7 +9,7 @@ import com.sopt.instagram.domain.entity.DmStory
 import com.sopt.instagram.util.DiffCallback
 
 
-class StoryAdapter :
+class GetStoryAdapter :
     androidx.recyclerview.widget.ListAdapter<DmStory, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -30,11 +30,11 @@ class StoryAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(story: DmStory) {
             with(binding) {
-                binding.data = story
+                data = story
                 Glide.with(root)
                     .load(story.memberImageUrl)
                     .into(ibDmStarredProfile)
-                    tvDmStarredName.text= story.memberId.toString()
+
             }
         }
     }
