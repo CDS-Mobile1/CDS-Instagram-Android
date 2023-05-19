@@ -58,6 +58,8 @@ dependencies {
 
     // constraint layout
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:+'
 
     // test
     testImplementation "junit:junit:4.13.2"
