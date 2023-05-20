@@ -15,6 +15,12 @@ class PostAdapter : ListAdapter<GetPostResponseDto, PostAdapter.PostViewHolder>(
         fun onBind(post: GetPostResponseDto) {
             with(binding){
                 data = post
+                Glide.with(root)
+                    .load(post.userInfo.memberImageUrl)
+                    .into(ivHomeUserProfileImage)
+                vpHomePostImage.adapter = PostImagesAdapter().apply {
+                    submitList(post.imageUrlList)
+                }
             }
         }
     }
