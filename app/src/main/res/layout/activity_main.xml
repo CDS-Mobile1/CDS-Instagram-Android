@@ -12,6 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_home_title"
+            android:layout_width="108dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_home_title"
+            app:layout_constraintBottom_toBottomOf="@id/tb_main"
+            app:layout_constraintStart_toStartOf="@id/tb_main"
+            app:layout_constraintTop_toTopOf="@id/tb_main" />
+        
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_home_under_arrow"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@id/iv_home_title"
+            app:layout_constraintTop_toTopOf="@id/iv_home_title"
+            app:layout_constraintBottom_toBottomOf="@id/iv_home_title"/>
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_main"
             android:layout_width="0dp"
@@ -19,7 +46,7 @@
             app:layout_constraintBottom_toTopOf="@id/bnv_main"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/tb_main" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv_main"

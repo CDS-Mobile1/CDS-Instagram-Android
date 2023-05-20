@@ -1,6 +1,8 @@
 package com.sopt.instagram.ui.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityMainBinding
@@ -12,6 +14,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
 
         initBnvItemSelectedListener()
+        initToolBar()
     }
 
     private fun initBnvItemSelectedListener() {
@@ -24,9 +27,11 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 R.id.menu_home -> {
                     this.changeFragment(HomeFragment())
                 }
+
                 R.id.menu_new_post -> {
                     // activity 이동
                 }
+
                 else -> {
                     // 아무것도 없음
                 }
@@ -41,5 +46,19 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             .beginTransaction()
             .replace(R.id.fcv_main, fragment)
             .commit()
+    }
+
+    private fun initToolBar() {
+        setSupportActionBar(binding.tbMain)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main_toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 }
