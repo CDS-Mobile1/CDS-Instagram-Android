@@ -21,12 +21,30 @@
             android:id="@+id/iv_story_image"
             setRoundedCornersImage="@{vm.currentStory.image}"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/shape_gray3_fill_6_rect"
             android:scaleType="centerCrop"
-            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_previous_touch_target"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toStartOf="@id/view_next_touch_target"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_next_touch_target"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_previous_touch_target"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
@@ -44,12 +62,12 @@
 
         <ImageView
             android:id="@+id/iv_story_profile"
-            android:layout_width="32dp"
-            android:background="@drawable/shape_white_fill_oval"
             setCircleImage="@{vm.currentAuthor.profileImage}"
+            android:layout_width="32dp"
             android:layout_height="0dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="9dp"
+            android:background="@drawable/shape_white_fill_oval"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_story_progress_bar" />
