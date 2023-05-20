@@ -21,6 +21,7 @@ class PostAdapter : ListAdapter<GetPostResponseDto, PostAdapter.PostViewHolder>(
                 vpHomePostImage.adapter = PostImagesAdapter().apply {
                     submitList(post.imageUrlList)
                 }
+                spiHomeImageIndicator.attachToPager(vpHomePostImage)
             }
         }
     }
