@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="data"
             type="com.sopt.instagram.data.model.response.GetPostResponseDto" />
@@ -19,7 +20,6 @@
             android:layout_height="42dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
-            android:src="@{data.userInfo.memberImageUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,10 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:text="@{data.userInfo.memberName}"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:text="@{data.userInfo.memberName}"
             app:layout_constraintBottom_toBottomOf="@id/iv_home_user_profile_image"
             app:layout_constraintStart_toEndOf="@id/iv_home_user_profile_image"
             app:layout_constraintTop_toTopOf="@id/iv_home_user_profile_image"
@@ -59,6 +59,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_home_user_profile_image" />
+
+        <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+            android:id="@+id/spi_home_image_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintEnd_toEndOf="@id/vp_home_post_image"
+            app:layout_constraintStart_toStartOf="@id/vp_home_post_image"
+            app:layout_constraintTop_toBottomOf="@+id/vp_home_post_image" />
 
         <ImageButton
             android:id="@+id/ib_home_like"
