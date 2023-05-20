@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.story.StoryFragment">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sopt.instagram.ui.story.StoryViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_story"
         android:layout_width="match_parent"
@@ -12,9 +19,11 @@
 
         <ImageView
             android:id="@+id/iv_story_image"
+            setRoundedCornersImage="@{vm.currentStory.image}"
             android:layout_width="0dp"
-            android:layout_height="0dp"
             android:background="@drawable/shape_gray3_fill_6_rect"
+            android:scaleType="centerCrop"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,22 +45,24 @@
         <ImageView
             android:id="@+id/iv_story_profile"
             android:layout_width="32dp"
+            android:background="@drawable/shape_white_fill_oval"
+            setCircleImage="@{vm.currentAuthor.profileImage}"
             android:layout_height="0dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="9dp"
-            android:background="@drawable/shape_white_fill_oval"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_story_progress_bar" />
 
         <TextView
-            android:id="@+id/tv_stroy_member_id"
+            android:id="@+id/tv_story_member_id"
             style="@style/AndEngBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:text="@{vm.currentAuthor.name}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
             app:layout_constraintStart_toEndOf="@id/iv_story_profile"
@@ -64,9 +75,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:text="@{vm.storyTime}"
             android:textColor="@color/gray5"
             app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
-            app:layout_constraintStart_toEndOf="@id/tv_stroy_member_id"
+            app:layout_constraintStart_toEndOf="@id/tv_story_member_id"
             app:layout_constraintTop_toTopOf="@id/iv_story_profile"
             tools:text="7분" />
 
