@@ -4,7 +4,7 @@ import com.sopt.instagram.data.model.response.wrapper.BaseResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 
-interface DmService {
+interface DmstoryService {
     @GET("~/api/friend/favorites/stories")
     suspend fun getStories(
         @Body request: DmstoryResponseDto,

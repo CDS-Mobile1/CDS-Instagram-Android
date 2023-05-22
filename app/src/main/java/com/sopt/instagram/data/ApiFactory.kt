@@ -2,7 +2,7 @@ package com.sopt.instagram.data
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sopt.instagram.BuildConfig
-import com.sopt.instagram.data.service.DmService
+import com.sopt.instagram.data.service.DmstoryService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
@@ -18,7 +18,7 @@ object ApiFactory {
 }
 
 object ServicePool {
-    val dmstoryService = ApiFactory.create<DmService>()
+    val dmstoryService = ApiFactory.create<DmstoryService>()
 
 
 }
