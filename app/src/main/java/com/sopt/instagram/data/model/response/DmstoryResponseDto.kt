@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DmResponseDTO(
+data class DmstoryResponseDto(
     @SerialName("memberId")
     val memberId: Int,
     @SerialName("memberImageUrl")
