@@ -1,48 +1,48 @@
-package com.sopt.instagram.ui.main.dm
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.sopt.instagram.data.model.response.DmResponseDTO
 import com.sopt.instagram.databinding.ItemDmStarredBinding
-import com.sopt.instagram.domain.entity.DmStory
-import com.sopt.instagram.util.DiffCallback
 
-
-class GetStoryAdapter :
-    androidx.recyclerview.widget.ListAdapter<DmStory, RecyclerView.ViewHolder>(diffUtil) {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return DmStoryViewHolder(
-            ItemDmStarredBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false,
-            ),
-        )
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is DmStoryViewHolder) holder.onBind(getItem(position))
-    }
-
-    class DmStoryViewHolder(private val binding: ItemDmStarredBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun onBind(story: DmStory) {
-            with(binding) {
-                data = story
+class GetStoryAdapter : ListAdapter<DmResponseDTO,GetStoryAdapter.GetStoryViewHolder>(
+    GetStoryCallback){
+    class GetStoryViewHolder(private val binding: ItemDmStarredBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind(item: DmResponseDTO){
+            with(binding){
+                tvDmStarredName.text=item.memberName
                 Glide.with(root)
-                    .load(story.memberImageUrl)
+                    .load(item.memberImageUrl)
                     .into(ibDmStarredProfile)
 
             }
         }
     }
 
-    companion object {
-        private val diffUtil = DiffCallback<DmStory>(
-            onItemsTheSame = { old, new -> old.memberId == new.memberId },
-            onContentsTheSame = { old, new -> old == new },
-        )
+    companion object{
+        private val GetStoryCallback=object :DiffUtil.ItemCallback<DmResponseDTO>(){
+            override fun areItemsTheSame(oldItem: DmResponseDTO, newItem: DmResponseDTO): Boolean {
+                return oldItem.hashCode()==newItem.hashCode()
+            }
+
+            override fun areContentsTheSame(
+                oldItem: DmResponseDTO,
+                newItem: DmResponseDTO
+            ): Boolean {
+                return oldItem==newItem
+            }
+
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GetStoryViewHolder {
+        val binding=ItemDmStarredBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return GetStoryViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: GetStoryViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 }
