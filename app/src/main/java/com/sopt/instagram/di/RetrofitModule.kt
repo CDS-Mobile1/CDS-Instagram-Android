@@ -61,7 +61,11 @@ object RetrofitModule {
     ): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(Json.asConverterFactory(APPLICATION_JSON.toMediaType()))
+            .addConverterFactory(
+                Json.asConverterFactory(
+                    APPLICATION_JSON.toMediaType(),
+                ),
+            )
             .client(client)
             .build()
 }

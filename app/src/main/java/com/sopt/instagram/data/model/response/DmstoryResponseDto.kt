@@ -13,5 +13,4 @@ data class DmstoryResponseDto(
     val memberName: String,
     @SerialName("isSpecial")
     val isSpecial: Boolean,
-
 )

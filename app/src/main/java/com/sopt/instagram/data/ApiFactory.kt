@@ -19,6 +19,4 @@ object ApiFactory {
 
 object ServicePool {
     val dmstoryService = ApiFactory.create<DmstoryService>()
-
-
 }
