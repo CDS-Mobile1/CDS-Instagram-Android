@@ -15,7 +15,7 @@
 
 
         <ImageButton
-            android:id="@+id/ib_dm_starred_profile"
+            android:id="@+id/btn_dm_starred_profile"
             android:layout_width="58dp"
             android:layout_height="58dp"
             android:contentDescription="@null"
@@ -38,9 +38,9 @@
             android:textColor="@color/gray1"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/ib_dm_starred_profile"
-            app:layout_constraintStart_toStartOf="@+id/ib_dm_starred_profile"
-            app:layout_constraintTop_toBottomOf="@+id/ib_dm_starred_profile"
+            app:layout_constraintEnd_toEndOf="@+id/btn_dm_starred_profile"
+            app:layout_constraintStart_toStartOf="@+id/btn_dm_starred_profile"
+            app:layout_constraintTop_toBottomOf="@+id/btn_dm_starred_profile"
             tools:text="hanyee" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
