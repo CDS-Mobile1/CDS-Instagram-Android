@@ -13,6 +13,10 @@ class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activit
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        initToolbar()
+    }
+
+    private fun initToolbar(){
         setSupportActionBar(binding.tbNewpostToolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
