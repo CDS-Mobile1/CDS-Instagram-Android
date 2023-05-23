@@ -24,7 +24,7 @@ class GetStoryAdapter : ListAdapter<DmstoryResponseDto, GetStoryAdapter.GetStory
     companion object {
         private val GetStoryCallback = object : DiffUtil.ItemCallback<DmstoryResponseDto>() {
             override fun areItemsTheSame(oldItem: DmstoryResponseDto, newItem: DmstoryResponseDto): Boolean {
-                return oldItem.hashCode() == newItem.hashCode()
+                return oldItem.memberId == newItem.memberId
             }
 
             override fun areContentsTheSame(
