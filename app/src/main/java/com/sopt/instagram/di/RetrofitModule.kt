@@ -47,10 +47,9 @@ object RetrofitModule {
             .readTimeout(15, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
             .addInterceptor(
-                HttpLoggingInterceptor().apply
-                    {
-                        level = HttpLoggingInterceptor.Level.BODY
-                    },
+                HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                },
             )
             .build()
 
@@ -61,7 +60,11 @@ object RetrofitModule {
     ): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(Json.asConverterFactory(APPLICATION_JSON.toMediaType()))
+            .addConverterFactory(
+                Json.asConverterFactory(
+                    APPLICATION_JSON.toMediaType(),
+                ),
+            )
             .client(client)
             .build()
 }
