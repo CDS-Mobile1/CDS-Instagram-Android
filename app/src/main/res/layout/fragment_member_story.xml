@@ -2,13 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.story.StoryFragment">
+    tools:context=".ui.story.member.MemberStoryFragment">
 
     <data>
 
         <variable
             name="vm"
+            type="com.sopt.instagram.ui.story.member.MemberStoryViewModel" />
+
+        <variable
+            name="avm"
             type="com.sopt.instagram.ui.story.StoryViewModel" />
+
+        <variable
+            name="index"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +70,7 @@
 
         <ImageView
             android:id="@+id/iv_story_profile"
-            setCircleImage="@{vm.currentAuthor.profileImage}"
+            setCircleImage="@{avm.currentAuthor.profileImage}"
             android:layout_width="32dp"
             android:layout_height="0dp"
             android:layout_marginStart="12dp"
@@ -80,7 +88,7 @@
             android:layout_marginStart="12dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{vm.currentAuthor.name}"
+            android:text="@{avm.currentAuthor.name}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
             app:layout_constraintStart_toEndOf="@id/iv_story_profile"
@@ -93,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{vm.storyTime}"
+            android:text="@{vm.currentStory.time}"
             android:textColor="@color/gray5"
             app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
             app:layout_constraintStart_toEndOf="@id/tv_story_member_id"
@@ -143,7 +151,7 @@
                 android:background="@drawable/shape_gray5_line_24_rect"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="14dp"
-                android:text="메시지 보내기"
+                android:text="@string/story_send_message"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/iv_story_like"

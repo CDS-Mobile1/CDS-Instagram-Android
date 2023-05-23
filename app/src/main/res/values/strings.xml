@@ -8,4 +8,5 @@
 
     <!-- story -->
     <string name="story_tag_btn_description">이 스토리에 태그된 대상 보기</string>
+    <string name="story_send_message">메시지 보내기</string>
 </resources>
