@@ -10,7 +10,19 @@ import com.sopt.instagram.databinding.ItemDmStarredBinding
 class GetStoryAdapter : ListAdapter<DmstoryResponseDto, GetStoryAdapter.GetStoryViewHolder>(
     GetStoryCallback,
 ) {
-    class GetStoryViewHolder(private val binding: ItemDmStarredBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GetStoryViewHolder {
+        val binding =
+            ItemDmStarredBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return GetStoryViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: GetStoryViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    class GetStoryViewHolder(private val binding: ItemDmStarredBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DmstoryResponseDto) {
             with(binding) {
                 tvDmStarredName.text = item.memberName
@@ -23,7 +35,10 @@ class GetStoryAdapter : ListAdapter<DmstoryResponseDto, GetStoryAdapter.GetStory
 
     companion object {
         private val GetStoryCallback = object : DiffUtil.ItemCallback<DmstoryResponseDto>() {
-            override fun areItemsTheSame(oldItem: DmstoryResponseDto, newItem: DmstoryResponseDto): Boolean {
+            override fun areItemsTheSame(
+                oldItem: DmstoryResponseDto,
+                newItem: DmstoryResponseDto,
+            ): Boolean {
                 return oldItem.memberId == newItem.memberId
             }
 
@@ -34,14 +49,5 @@ class GetStoryAdapter : ListAdapter<DmstoryResponseDto, GetStoryAdapter.GetStory
                 return oldItem == newItem
             }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GetStoryViewHolder {
-        val binding = ItemDmStarredBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return GetStoryViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: GetStoryViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 }
