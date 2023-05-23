@@ -1,6 +1,10 @@
 package com.sopt.instagram
 
+<<<<<<< HEAD
 import org.junit.Assert.* // ktlint-disable no-wildcard-imports
+=======
+import org.junit.Assert.assertEquals
+>>>>>>> f68f2c0ecf1ebbc396733e32ba4c7d3be90f3ca2
 import org.junit.Test
 
 /**
