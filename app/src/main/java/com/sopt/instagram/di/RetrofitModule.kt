@@ -47,10 +47,9 @@ object RetrofitModule {
             .readTimeout(15, TimeUnit.SECONDS)
             .addInterceptor(interceptor)
             .addInterceptor(
-                HttpLoggingInterceptor().apply
-                    {
-                        level = HttpLoggingInterceptor.Level.BODY
-                    },
+                HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                },
             )
             .build()
 
