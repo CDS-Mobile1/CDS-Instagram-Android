@@ -13,7 +13,7 @@ class PostAdapter : ListAdapter<GetPostResponseDto, PostAdapter.PostViewHolder>(
     class PostViewHolder(private val binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(post: GetPostResponseDto) {
-            with(binding){
+            with(binding) {
                 data = post
                 Glide.with(root)
                     .load(post.userInfo.memberImageUrl)
@@ -31,8 +31,8 @@ class PostAdapter : ListAdapter<GetPostResponseDto, PostAdapter.PostViewHolder>(
             ItemPostBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
