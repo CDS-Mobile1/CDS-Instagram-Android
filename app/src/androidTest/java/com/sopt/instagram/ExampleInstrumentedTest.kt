@@ -1,12 +1,10 @@
 package com.sopt.instagram
 
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry // ktlint-disable import-ordering
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
+import org.junit.Assert.* // ktlint-disable no-wildcard-imports
 
 /**
  * Instrumented test, which will execute on an Android device.
