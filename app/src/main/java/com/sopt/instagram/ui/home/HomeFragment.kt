@@ -1,10 +1,7 @@
 package com.sopt.instagram.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.FragmentHomeBinding
@@ -23,7 +20,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onDestroyView()
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         binding.rvHomePost.adapter = PostAdapter().apply {
             submitList(viewModel.mockPostList)
         }
