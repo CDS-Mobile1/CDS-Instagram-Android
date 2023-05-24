@@ -112,6 +112,11 @@ class MemberStoryFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         _storyIndex = null
+        with(requireActivity()) {
+            window.statusBarColor = getColor(R.color.white)
+            // TODO: use WindowInsetsController instead of systemUiVisibility
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
     }
 
     companion object {
