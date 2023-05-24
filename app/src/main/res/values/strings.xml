@@ -19,4 +19,9 @@
     <!-- tag -->
     <string name="tag_title">이 스토리에 태그된 대상</string>
     <string name="tag_member_follow">팔로우</string>
+
+    <!-- dm -->
+    <string name="gosopt_cds_app1">gosopt_cds_app1</string>
+    <string name="starred">즐겨찾기</string>
+    <string name="message">메시지</string>
 </resources>

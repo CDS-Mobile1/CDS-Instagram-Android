@@ -55,7 +55,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providesSoptRetrofit(
+    fun providesInstagramRetrofit(
         client: OkHttpClient,
     ): Retrofit =
         Retrofit.Builder()
