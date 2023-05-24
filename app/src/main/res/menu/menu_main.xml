@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_menu_home"
+        android:title=""/>
+
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_menu_search"
+        android:title=""/>
+
+    <item
+        android:id="@+id/menu_new_post"
+        android:icon="@drawable/ic_menu_new_post"
+        android:title=""/>
+
+    <item
+        android:id="@+id/menu_reels"
+        android:icon="@drawable/ic_menu_reels"
+        android:title=""/>
+
+    <item
+        android:id="@+id/menu_mypage"
+        android:icon="@drawable/ic_menu_mypage"
+        android:title=""/>
+
+</menu>
