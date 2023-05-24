@@ -13,16 +13,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MemberStoryViewModel @Inject constructor() : ViewModel() {
-    private val _Member_storyState = MutableLiveData<MemberStoryUiState>()
-    val memberStoryUiState: LiveData<MemberStoryUiState>
-        get() = _Member_storyState
+    private val _storyState = MutableLiveData<MemberStoryUiState>()
+    val storyState: LiveData<MemberStoryUiState>
+        get() = _storyState
 
     private val _storyList = MutableLiveData<List<Story>>()
-    val storyList: List<Story>
+    private val storyList: List<Story>
         get() = _storyList.value ?: emptyList()
 
     private val _storyIndex = MutableLiveData<Int>()
-    val storyIndex: LiveData<Int>
+    private val storyIndex: LiveData<Int>
         get() = _storyIndex
 
     val currentStory = MutableLiveData<Story>()
@@ -61,19 +61,19 @@ class MemberStoryViewModel @Inject constructor() : ViewModel() {
 
     fun increaseStoryIndex() {
         if (storyIndex.value == storyList.size - 1) {
-            _Member_storyState.value = NextMember
+            _storyState.value = NextMember
             return
         }
         _storyIndex.value = _storyIndex.value?.plus(1)
-        _Member_storyState.value = NextStory
+        _storyState.value = NextStory
     }
 
     fun decreaseStoryIndex() {
         if (storyIndex.value == 0) {
-            _Member_storyState.value = PreviousMember
+            _storyState.value = PreviousMember
             return
         }
         _storyIndex.value = _storyIndex.value?.minus(1)
-        _Member_storyState.value = PreviousStory
+        _storyState.value = PreviousStory
     }
 }

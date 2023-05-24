@@ -49,7 +49,7 @@ class MemberStoryFragment :
     }
 
     private fun setupStoryState() {
-        viewModel.memberStoryUiState.observe(viewLifecycleOwner) { state ->
+        viewModel.storyState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 NextStory -> {
                     viewModel.setCurrentStory()
