@@ -11,7 +11,9 @@ import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextMember
 import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextStory
 import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousMember
 import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousStory
+import com.sopt.instagram.ui.story.tag.TagDialogFragment
 import com.sopt.instagram.util.binding.BindingFragment
+import com.sopt.instagram.util.extension.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +34,7 @@ class MemberStoryFragment :
         getIndexStory()
         initStatusBarColor()
         setupStoryState()
+        initStoryTagBtnClickListener()
     }
 
     private fun getIndexStory() {
@@ -85,6 +88,12 @@ class MemberStoryFragment :
             val args = Bundle()
             args.putInt(KEY_INDEX_STORY, index)
             arguments = args
+        }
+    }
+
+    private fun initStoryTagBtnClickListener() {
+        binding.btnStoryTag.setOnSingleClickListener {
+            TagDialogFragment().show(parentFragmentManager, this.tag)
         }
     }
 }

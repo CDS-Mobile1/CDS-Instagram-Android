@@ -47,6 +47,10 @@ class StoryViewModel @Inject constructor() : ViewModel() {
         _memberList.value = members
     }
 
+    fun getTagList() {
+        // TODO: 서버통신으로 태그 리스트 받아오기
+    }
+
     fun setCurrentMember(index: Int) {
         if (index !in memberList.indices) {
             _storyState.value = Finish
