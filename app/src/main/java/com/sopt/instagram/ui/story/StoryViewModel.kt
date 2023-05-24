@@ -4,13 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sopt.instagram.domain.entity.Member
+import com.sopt.instagram.domain.repository.StoryRepository
 import com.sopt.instagram.ui.story.StoryUiState.ChangeMember
 import com.sopt.instagram.ui.story.StoryUiState.Finish
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class StoryViewModel @Inject constructor() : ViewModel() {
+class StoryViewModel @Inject constructor(
+    private val storyRepository: StoryRepository,
+) : ViewModel() {
     private val _storyState = MutableLiveData<StoryUiState>()
     val storyState: LiveData<StoryUiState>
         get() = _storyState
@@ -45,10 +48,6 @@ class StoryViewModel @Inject constructor() : ViewModel() {
             ),
         )
         _memberList.value = members
-    }
-
-    fun getTagList() {
-        // TODO: 서버통신으로 태그 리스트 받아오기
     }
 
     fun setCurrentMember(index: Int) {

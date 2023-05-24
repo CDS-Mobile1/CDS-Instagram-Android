@@ -106,7 +106,9 @@ class MemberStoryFragment :
 
     private fun initStoryTagBtnClickListener() {
         binding.btnStoryTag.setOnSingleClickListener {
-            TagDialogFragment().show(parentFragmentManager, this.tag)
+            viewModel.currentStory.value?.id?.let { id ->
+                TagDialogFragment.newInstance(id).show(parentFragmentManager, TAG_DIALOG)
+            }
         }
     }
 
@@ -121,7 +123,8 @@ class MemberStoryFragment :
     }
 
     companion object {
-        private const val KEY_INDEX_STORY = "KeyIndexStory"
+        private const val KEY_INDEX_STORY = "IndexStory"
+        private const val TAG_DIALOG = "TagDialog"
 
         @JvmStatic
         fun newInstance(index: Int) = MemberStoryFragment().apply {
