@@ -15,15 +15,15 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_main"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_home_title"
-            android:layout_width="108dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:src="@drawable/ic_home_title"
             app:layout_constraintBottom_toBottomOf="@id/tb_main"
@@ -32,8 +32,8 @@
         
         <ImageView
             android:id="@+id/iv_home_under_arrow"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_home_under_arrow"
             android:layout_marginStart="4dp"
             app:layout_constraintStart_toEndOf="@id/iv_home_title"
