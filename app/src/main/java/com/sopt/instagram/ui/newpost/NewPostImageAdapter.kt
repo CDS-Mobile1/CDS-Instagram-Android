@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sopt.instagram.databinding.ItemNewpostImageBinding
 import com.sopt.instagram.util.DiffCallback
+import timber.log.Timber
 import java.util.Collections
 
 class NewPostImageAdapter :
@@ -31,12 +32,14 @@ class NewPostImageAdapter :
 
     override fun onBindViewHolder(holder: NewPostImageViewHolder, position: Int) {
         holder.onBind(getItem(position))
+        Timber.tag("onbindviewholder").d(currentList.toString())
     }
 
     override fun onItemMove(from: Int, to: Int) {
         val newList = currentList.toMutableList()
-        Collections.swap(newList, from, to)
-        submitList(newList)
+        Timber.tag("getItemFrom").d(newList.toString())
+//        Collections.swap(newList, from, to)
+//        submitList(newList)
     }
 
     companion object {
