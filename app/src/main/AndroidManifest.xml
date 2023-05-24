@@ -19,7 +19,9 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.newpost.NewPostActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Instagram" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
