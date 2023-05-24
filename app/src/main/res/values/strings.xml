@@ -6,6 +6,12 @@
     <string name="dummy"><string name="dummy">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string></string>
     <string name="binding_error_msg">Binding not initialized to reference the view.</string>
 
+    <!-- new post -->
+    <string name="newpost_user_button_text">사람 태그하기</string>
+    <string name="newpost_add_location_button_text">위치 추가하기</string>
+    <string name="newpost_sharing_facebook_button_text">Facebook에 공유</string>
+    <string name="newpost_setting_button_text">고급 설정</string>
+
     <!-- story -->
     <string name="story_tag_btn_description">이 스토리에 태그된 대상 보기</string>
     <string name="story_send_message">메시지 보내기</string>
