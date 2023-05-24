@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.sopt.instagram.databinding.ItemNewpostImageBinding
 import com.sopt.instagram.util.DiffCallback
 import timber.log.Timber
-import java.util.Collections
 
 class NewPostImageAdapter :
     ListAdapter<String, NewPostImageAdapter.NewPostImageViewHolder>(diffUtil),
