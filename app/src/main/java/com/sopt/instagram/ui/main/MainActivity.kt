@@ -20,28 +20,19 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private fun initBnvItemSelectedListener() {
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
-        if (currentFragment == null) {
-            supportFragmentManager.beginTransaction().add(R.id.fcv_main, HomeFragment()).commit()
-        }
-        binding.bnvMain.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_home -> {
-                    this.changeFragment(HomeFragment())
-                }
-
+        supportFragmentManager.findFragmentById(R.id.fcv_main)
+            ?: supportFragmentManager.beginTransaction().add(R.id.fcv_main, HomeFragment()).commit()
+        binding.bnvMain.setOnItemSelectedListener { menu ->
+            when (menu.itemId) {
                 R.id.menu_new_post -> {
                     startActivity(Intent(this, NewPostActivity::class.java))
                 }
 
-                else -> {
-                    // 아무것도 없음
-                }
+                else -> {}
             }
             return@setOnItemSelectedListener true
         }
     }
-
 
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager

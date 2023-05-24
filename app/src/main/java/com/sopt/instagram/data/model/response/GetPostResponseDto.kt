@@ -10,7 +10,7 @@ data class GetPostResponseDto(
     @SerialName("imageUrlList")
     val imageUrlList: List<String>,
     @SerialName("userInfo")
-    val userInfo: UserInfo
+    val userInfo: UserInfo,
 ) {
     @Serializable
     data class UserInfo(
@@ -19,6 +19,6 @@ data class GetPostResponseDto(
         @SerialName("memberImageUrl")
         val memberImageUrl: String,
         @SerialName("memberName")
-        val memberName: String
+        val memberName: String,
     )
 }
