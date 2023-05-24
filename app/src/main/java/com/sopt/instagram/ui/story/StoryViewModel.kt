@@ -1,13 +1,20 @@
 package com.sopt.instagram.ui.story
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sopt.instagram.domain.entity.Member
+import com.sopt.instagram.ui.story.StoryUiState.ChangeMember
+import com.sopt.instagram.ui.story.StoryUiState.Finish
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class StoryViewModel @Inject constructor() : ViewModel() {
+    private val _storyState = MutableLiveData<StoryUiState>()
+    val storyState: LiveData<StoryUiState>
+        get() = _storyState
+
     private val _memberList = MutableLiveData<List<Member>>()
     val memberList: List<Member>
         get() = _memberList.value ?: emptyList()
@@ -38,14 +45,14 @@ class StoryViewModel @Inject constructor() : ViewModel() {
             ),
         )
         _memberList.value = members
-        setCurrentMember(0)
     }
 
     fun setCurrentMember(index: Int) {
         if (index !in memberList.indices) {
-            // TODO: 액티비티 finish
+            _storyState.value = Finish
             return
         }
         currentMember.value = memberList[index]
+        _storyState.value = ChangeMember(index)
     }
 }

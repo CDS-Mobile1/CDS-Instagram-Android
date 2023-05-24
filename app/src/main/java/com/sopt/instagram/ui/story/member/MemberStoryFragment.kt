@@ -7,10 +7,10 @@ import androidx.fragment.app.viewModels
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.FragmentMemberStoryBinding
 import com.sopt.instagram.ui.story.StoryViewModel
-import com.sopt.instagram.ui.story.member.StoryState.NextMember
-import com.sopt.instagram.ui.story.member.StoryState.NextStory
-import com.sopt.instagram.ui.story.member.StoryState.PreviousMember
-import com.sopt.instagram.ui.story.member.StoryState.PreviousStory
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextMember
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextStory
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousMember
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousStory
 import com.sopt.instagram.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +49,7 @@ class MemberStoryFragment :
     }
 
     private fun setupStoryState() {
-        viewModel.storyState.observe(viewLifecycleOwner) { state ->
+        viewModel.memberStoryUiState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 NextStory -> {
                     viewModel.setCurrentStory()
@@ -62,11 +62,11 @@ class MemberStoryFragment :
                 }
 
                 NextMember -> {
-                    activityViewModel.setCurrentMember(storyIndex)
+                    activityViewModel.setCurrentMember(storyIndex + 1)
                 }
 
                 PreviousMember -> {
-                    activityViewModel.setCurrentMember(storyIndex)
+                    activityViewModel.setCurrentMember(storyIndex - 1)
                 }
             }
         }

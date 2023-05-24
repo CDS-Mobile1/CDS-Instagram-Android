@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityStoryBinding
+import com.sopt.instagram.ui.story.StoryUiState.ChangeMember
+import com.sopt.instagram.ui.story.StoryUiState.Finish
 import com.sopt.instagram.util.binding.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +19,7 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
 
         initViewPager()
         setCurrentMember()
+        setupStoryUiState()
     }
 
     private fun initViewPager() {
@@ -24,7 +27,6 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
             vpStory.adapter = StoryAdapter(
                 fragmentActivity = this@StoryActivity,
                 storyListSize = viewModel.memberList.size,
-                storyIndex = index,
             )
             vpStory.isUserInputEnabled = false
         }
@@ -32,5 +34,17 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
 
     private fun setCurrentMember() {
         viewModel.setCurrentMember(index)
+        binding.vpStory.currentItem = index
+    }
+
+    private fun setupStoryUiState() {
+        viewModel.storyState.observe(this) { state ->
+            when (state) {
+                is ChangeMember -> {
+                    binding.vpStory.currentItem = state.index
+                }
+                is Finish -> finish()
+            }
+        }
     }
 }

@@ -4,18 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sopt.instagram.domain.entity.Story
-import com.sopt.instagram.ui.story.member.StoryState.NextMember
-import com.sopt.instagram.ui.story.member.StoryState.NextStory
-import com.sopt.instagram.ui.story.member.StoryState.PreviousMember
-import com.sopt.instagram.ui.story.member.StoryState.PreviousStory
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextMember
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextStory
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousMember
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousStory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MemberStoryViewModel @Inject constructor() : ViewModel() {
-    private val _storyState = MutableLiveData<StoryState>()
-    val storyState: LiveData<StoryState>
-        get() = _storyState
+    private val _Member_storyState = MutableLiveData<MemberStoryUiState>()
+    val memberStoryUiState: LiveData<MemberStoryUiState>
+        get() = _Member_storyState
 
     private val _storyList = MutableLiveData<List<Story>>()
     val storyList: List<Story>
@@ -32,6 +32,7 @@ class MemberStoryViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun getStory() {
+        // TODO: 서버통신으로 현재 회원의 스토리 가져오기
         val list = listOf(
             Story(
                 id = 1,
@@ -60,19 +61,19 @@ class MemberStoryViewModel @Inject constructor() : ViewModel() {
 
     fun increaseStoryIndex() {
         if (storyIndex.value == storyList.size - 1) {
-            _storyState.value = NextMember
+            _Member_storyState.value = NextMember
             return
         }
         _storyIndex.value = _storyIndex.value?.plus(1)
-        _storyState.value = NextStory
+        _Member_storyState.value = NextStory
     }
 
     fun decreaseStoryIndex() {
         if (storyIndex.value == 0) {
-            _storyState.value = PreviousMember
+            _Member_storyState.value = PreviousMember
             return
         }
         _storyIndex.value = _storyIndex.value?.minus(1)
-        _storyState.value = PreviousStory
+        _Member_storyState.value = PreviousStory
     }
 }
