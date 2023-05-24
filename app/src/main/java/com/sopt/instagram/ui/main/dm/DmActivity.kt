@@ -9,7 +9,10 @@ import com.sopt.instagram.util.binding.BindingActivity
 class DmActivity : BindingActivity<ActivityDmBinding>(R.layout.activity_dm) {
 
     private val dmstoryService = ServicePool.dmstoryService
+    private val dmstarredService = ServicePool.dmstarService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
     }
 }
