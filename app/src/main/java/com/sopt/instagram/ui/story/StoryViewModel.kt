@@ -8,14 +8,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class StoryViewModel @Inject constructor() : ViewModel() {
-    val currentAuthor = MutableLiveData<Member>()
+    private val _memberList = MutableLiveData<List<Member>>()
+    val memberList: List<Member>
+        get() = _memberList.value ?: emptyList()
+
+    val currentMember = MutableLiveData<Member>()
 
     init {
-        getMember(0)
+        getMember()
     }
 
-    private fun getMember(index: Int) {
-        val list = listOf(
+    private fun getMember() {
+        // TODO: 서버 통신으로 스토리 멤버 리스트 가져오기
+        val members = listOf(
             Member(
                 id = 1,
                 profileImage = "https://user-images.githubusercontent.com/70993562/210304413-00952aa3-4faa-46a8-bacf-b94df2cc0499.jpg",
@@ -32,6 +37,15 @@ class StoryViewModel @Inject constructor() : ViewModel() {
                 name = "sujung_village",
             ),
         )
-        currentAuthor.value = list[index]
+        _memberList.value = members
+        setCurrentMember(0)
+    }
+
+    fun setCurrentMember(index: Int) {
+        if (index !in memberList.indices) {
+            // TODO: 액티비티 finish
+            return
+        }
+        currentMember.value = memberList[index]
     }
 }

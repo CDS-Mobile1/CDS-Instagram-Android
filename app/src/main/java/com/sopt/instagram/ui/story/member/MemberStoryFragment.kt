@@ -3,9 +3,14 @@ package com.sopt.instagram.ui.story.member
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.FragmentMemberStoryBinding
 import com.sopt.instagram.ui.story.StoryViewModel
+import com.sopt.instagram.ui.story.member.StoryState.NextMember
+import com.sopt.instagram.ui.story.member.StoryState.NextStory
+import com.sopt.instagram.ui.story.member.StoryState.PreviousMember
+import com.sopt.instagram.ui.story.member.StoryState.PreviousStory
 import com.sopt.instagram.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,20 +18,26 @@ import dagger.hilt.android.AndroidEntryPoint
 class MemberStoryFragment :
     BindingFragment<FragmentMemberStoryBinding>(R.layout.fragment_member_story) {
     private val activityViewModel by activityViewModels<StoryViewModel>()
-    private var storyIndex: Int? = null
+    private val viewModel by viewModels<MemberStoryViewModel>()
+
+    private var _storyIndex: Int? = null
+    private val storyIndex
+        get() = requireNotNull(_storyIndex)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.avm = activityViewModel
+        binding.vm = viewModel
 
         getIndexStory()
         initStatusBarColor()
+        setupStoryState()
     }
 
     private fun getIndexStory() {
         arguments ?: return
-        storyIndex = arguments?.getInt(KEY_INDEX_STORY)
-        binding.index = storyIndex
+        _storyIndex = arguments?.getInt(KEY_INDEX_STORY)
+        binding.index = _storyIndex
     }
 
     private fun initStatusBarColor() {
@@ -37,9 +48,33 @@ class MemberStoryFragment :
         }
     }
 
+    private fun setupStoryState() {
+        viewModel.storyState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                NextStory -> {
+                    viewModel.setCurrentStory()
+                    // TODO: 프로그래스 바 증가
+                }
+
+                PreviousStory -> {
+                    viewModel.setCurrentStory()
+                    // TODO: 프로그래스 바 감소
+                }
+
+                NextMember -> {
+                    activityViewModel.setCurrentMember(storyIndex)
+                }
+
+                PreviousMember -> {
+                    activityViewModel.setCurrentMember(storyIndex)
+                }
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        storyIndex = null
+        _storyIndex = null
     }
 
     companion object {

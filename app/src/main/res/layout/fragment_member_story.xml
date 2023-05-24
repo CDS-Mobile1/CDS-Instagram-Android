@@ -41,18 +41,29 @@
             android:id="@+id/view_previous_touch_target"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:onClick="@{()->vm.decreaseStoryIndex()}"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toStartOf="@id/view_remain_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_remain_space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
             app:layout_constraintEnd_toStartOf="@id/view_next_touch_target"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_previous_touch_target"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/view_next_touch_target"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:onClick="@{()->vm.increaseStoryIndex()}"
             app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/view_previous_touch_target"
+            app:layout_constraintStart_toEndOf="@id/view_remain_space"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
@@ -70,7 +81,7 @@
 
         <ImageView
             android:id="@+id/iv_story_profile"
-            setCircleImage="@{avm.currentAuthor.profileImage}"
+            setCircleImage="@{avm.currentMember.profileImage}"
             android:layout_width="32dp"
             android:layout_height="0dp"
             android:layout_marginStart="12dp"
@@ -88,7 +99,7 @@
             android:layout_marginStart="12dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{avm.currentAuthor.name}"
+            android:text="@{avm.currentMember.name}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
             app:layout_constraintStart_toEndOf="@id/iv_story_profile"

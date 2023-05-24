@@ -5,12 +5,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sopt.instagram.ui.story.member.MemberStoryFragment
 
-class StoryAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
-    private val fragmentList = listOf<Fragment>(
-        MemberStoryFragment(),
-    )
+class StoryAdapter(
+    private val fragmentActivity: FragmentActivity,
+    private val storyListSize: Int,
+    private val storyIndex: Int,
+) : FragmentStateAdapter(fragmentActivity) {
+    override fun getItemCount(): Int = storyListSize
 
-    override fun getItemCount(): Int = fragmentList.size
-
-    override fun createFragment(position: Int): Fragment = fragmentList[position]
+    override fun createFragment(position: Int): Fragment = MemberStoryFragment.newInstance(storyIndex)
 }
