@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/btn_dm_msg_photo"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_dm_msg_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="38dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_dm_msg_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_dm_msg_photo"
+        app:layout_constraintTop_toTopOf="@+id/btn_dm_msg_photo"
+        tools:text="lovekim" />
+
+
+    <TextView
+        android:id="@+id/tv_dm_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_dm_msg_photo"
+        app:layout_constraintStart_toStartOf="@+id/tv_dm_msg_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dm_msg_name"
+        app:layout_constraintTop_toTopOf="@id/tv_dm_msg_name"
+        tools:text="너 지금 뭐 해?" />
+
+    <ImageButton
+        android:id="@+id/btn_dm_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/ic_dm_star_press"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_dm_msg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_dm_msg_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
