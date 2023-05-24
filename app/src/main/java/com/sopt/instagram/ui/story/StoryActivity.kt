@@ -30,6 +30,7 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
                 storyListSize = viewModel.memberList.size,
             )
             vpStory.setPageTransformer(CubeOutRotationTransformer())
+            vpStory.isUserInputEnabled = false
         }
     }
 

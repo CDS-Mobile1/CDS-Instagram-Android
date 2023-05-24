@@ -2,6 +2,7 @@ package com.sopt.instagram.ui.story.member
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.sopt.instagram.R
@@ -26,6 +27,8 @@ class MemberStoryFragment :
     private val storyIndex
         get() = requireNotNull(_storyIndex)
 
+    private val progressBars: MutableList<View> = mutableListOf()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.avm = activityViewModel
@@ -33,6 +36,7 @@ class MemberStoryFragment :
 
         getIndexStory()
         initStatusBarColor()
+        addProgressBars()
         setupStoryState()
         initStoryTagBtnClickListener()
     }
@@ -51,17 +55,41 @@ class MemberStoryFragment :
         }
     }
 
+    private fun addProgressBars() {
+        for (i in 1..viewModel.storyList.size) {
+            progressBars.add(
+                layoutInflater.inflate(
+                    R.layout.view_story_progress_bar,
+                    binding.layoutStoryProgressBar,
+                ),
+            )
+        }
+        binding.layoutStoryProgressBar.getChildAt(0).background =
+            AppCompatResources.getDrawable(
+                requireContext(),
+                R.drawable.shape_gray5_fill_1000_rect,
+            )
+    }
+
     private fun setupStoryState() {
         viewModel.storyState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 NextStory -> {
                     viewModel.setCurrentStory()
-                    // TODO: 프로그래스 바 증가
+                    binding.layoutStoryProgressBar.getChildAt(viewModel.storyIndex).background =
+                        AppCompatResources.getDrawable(
+                            requireContext(),
+                            R.drawable.shape_gray5_fill_1000_rect,
+                        )
                 }
 
                 PreviousStory -> {
                     viewModel.setCurrentStory()
-                    // TODO: 프로그래스 바 감소
+                    binding.layoutStoryProgressBar.getChildAt(viewModel.storyIndex + 1).background =
+                        AppCompatResources.getDrawable(
+                            requireContext(),
+                            R.drawable.shape_gray2_fill_1000_rect,
+                        )
                 }
 
                 NextMember -> {
@@ -75,12 +103,19 @@ class MemberStoryFragment :
         }
     }
 
+    private fun initStoryTagBtnClickListener() {
+        binding.btnStoryTag.setOnSingleClickListener {
+            TagDialogFragment().show(parentFragmentManager, this.tag)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _storyIndex = null
     }
 
     companion object {
+
         private const val KEY_INDEX_STORY = "KeyIndexStory"
 
         @JvmStatic
@@ -88,12 +123,6 @@ class MemberStoryFragment :
             val args = Bundle()
             args.putInt(KEY_INDEX_STORY, index)
             arguments = args
-        }
-    }
-
-    private fun initStoryTagBtnClickListener() {
-        binding.btnStoryTag.setOnSingleClickListener {
-            TagDialogFragment().show(parentFragmentManager, this.tag)
         }
     }
 }

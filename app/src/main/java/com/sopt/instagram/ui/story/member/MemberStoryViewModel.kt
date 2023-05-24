@@ -18,12 +18,12 @@ class MemberStoryViewModel @Inject constructor() : ViewModel() {
         get() = _storyState
 
     private val _storyList = MutableLiveData<List<Story>>()
-    private val storyList: List<Story>
+    val storyList: List<Story>
         get() = _storyList.value ?: emptyList()
 
     private val _storyIndex = MutableLiveData<Int>()
-    private val storyIndex: LiveData<Int>
-        get() = _storyIndex
+    val storyIndex: Int
+        get() = _storyIndex.value ?: 0
 
     val currentStory = MutableLiveData<Story>()
 
@@ -56,11 +56,11 @@ class MemberStoryViewModel @Inject constructor() : ViewModel() {
     }
 
     fun setCurrentStory() {
-        currentStory.value = storyList[storyIndex.value ?: 0]
+        currentStory.value = storyList[storyIndex]
     }
 
     fun increaseStoryIndex() {
-        if (storyIndex.value == storyList.size - 1) {
+        if (storyIndex == storyList.size - 1) {
             _storyState.value = NextMember
             return
         }
@@ -69,7 +69,7 @@ class MemberStoryViewModel @Inject constructor() : ViewModel() {
     }
 
     fun decreaseStoryIndex() {
-        if (storyIndex.value == 0) {
+        if (storyIndex == 0) {
             _storyState.value = PreviousMember
             return
         }
