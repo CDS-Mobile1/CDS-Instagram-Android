@@ -45,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@id/rv_newpost_image" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_newpost_tag_user_button"
+            android:id="@+id/layout_newpost_tag_user_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,6 +53,7 @@
             app:layout_constraintTop_toBottomOf="@id/et_newpost_contents">
 
             <View
+                android:id="@+id/view_newpost_devider1"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="@color/gray5"
@@ -73,6 +74,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_newpost_tag_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -86,14 +88,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_newpost_location_add_button"
+            android:id="@+id/layout_newpost_location_add_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_newpost_tag_user_button">
+            app:layout_constraintTop_toBottomOf="@id/layout_newpost_tag_user_button">
 
             <View
+                android:id="@+id/view_newpost_devider2"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="@color/gray5"
@@ -114,6 +117,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_newpost_add_location_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -127,14 +131,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_newpost_sharing_facebook_button"
+            android:id="@+id/layout_newpost_sharing_facebook_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_newpost_location_add_button">
+            app:layout_constraintTop_toBottomOf="@id/layout_newpost_location_add_button">
 
             <View
+                android:id="@+id/view_newpost_devider3"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="@color/gray5"
@@ -155,6 +160,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_newpost_sharing_facebook_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -166,6 +172,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_newpost_sharing_facebook_icon" />
 
             <Switch
+                android:id="@+id/switch_newpost_sharing_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -176,14 +183,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_newpost_setting_button"
+            android:id="@+id/layout_newpost_setting_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_newpost_sharing_facebook_button">
+            app:layout_constraintTop_toBottomOf="@id/layout_newpost_sharing_facebook_button">
 
             <View
+                android:id="@+id/view_newpost_devider4"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="@color/gray5"
@@ -204,6 +212,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_newpost_setting_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"

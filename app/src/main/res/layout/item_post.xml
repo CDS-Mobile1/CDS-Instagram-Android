@@ -188,6 +188,7 @@
             tools:text="여기는 게시글 내용이 들어가는 곳인데 이렇게 글이 길어지면 2단으로 위처럼 작성되며 그를 넘어서게 길어지면 ...으로 표시를 해줘야한다" />
 
         <TextView
+            android:id="@+id/tv_home_post_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
