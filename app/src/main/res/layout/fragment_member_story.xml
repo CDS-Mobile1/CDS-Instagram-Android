@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.story.member.MemberStoryFragment">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sopt.instagram.ui.story.member.MemberStoryViewModel" />
+
+        <variable
+            name="avm"
+            type="com.sopt.instagram.ui.story.StoryViewModel" />
+
+        <variable
+            name="index"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_story"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/iv_story_image"
+            setRoundedCornersImage="@{vm.currentStory.image}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_gray3_fill_6_rect"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_previous_touch_target"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->vm.decreaseStoryIndex()}"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toStartOf="@id/view_remain_space"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_remain_space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toStartOf="@id/view_next_touch_target"
+            app:layout_constraintStart_toEndOf="@id/view_previous_touch_target"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_next_touch_target"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{()->vm.increaseStoryIndex()}"
+            app:layout_constraintBottom_toTopOf="@id/layout_story_input_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_remain_space"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layout_story_progress_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_story_profile"
+            setCircleImage="@{avm.currentMember.profileImage}"
+            android:layout_width="32dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/shape_white_fill_oval"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_story_progress_bar" />
+
+        <TextView
+            android:id="@+id/tv_story_member_id"
+            style="@style/AndEngBody1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{avm.currentMember.name}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
+            app:layout_constraintStart_toEndOf="@id/iv_story_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_story_profile"
+            tools:text="lovekim" />
+
+        <TextView
+            android:id="@+id/tv_story_time"
+            style="@style/AndKorBody2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{vm.currentStory.time}"
+            android:textColor="@color/gray5"
+            app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
+            app:layout_constraintStart_toEndOf="@id/tv_story_member_id"
+            app:layout_constraintTop_toTopOf="@id/iv_story_profile"
+            tools:text="7분" />
+
+        <ImageButton
+            android:id="@+id/btn_story_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-6dp"
+            android:background="@null"
+            android:contentDescription="@string/story_tag_btn_description"
+            android:padding="12dp"
+            android:src="@drawable/ic_story_tag"
+            app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
+            app:layout_constraintEnd_toStartOf="@id/iv_story_detail"
+            app:layout_constraintTop_toTopOf="@id/iv_story_profile" />
+
+        <ImageView
+            android:id="@+id/iv_story_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:src="@drawable/ic_story_detail"
+            app:layout_constraintBottom_toBottomOf="@id/iv_story_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_story_profile" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_story_input_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:paddingTop="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_story_input_box"
+                style="@style/AndKorBody1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/shape_gray5_line_24_rect"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="14dp"
+                android:text="@string/story_send_message"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_story_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_story_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_story_like"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_story_send"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_story_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_story_send"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
