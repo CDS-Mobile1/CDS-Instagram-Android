@@ -1,6 +1,6 @@
 package com.sopt.instagram.domain.entity
 
-data class FriendStories(
+data class FriendStory(
     val isSpecial: Boolean,
     val memberId: Int,
     val memberImageUrl: String,
