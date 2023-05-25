@@ -25,7 +25,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun initAdapter() {
-        viewModel.getPostList()
         viewModel.getPostListState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Success -> {
