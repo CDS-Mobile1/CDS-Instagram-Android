@@ -12,6 +12,8 @@ import com.sopt.instagram.data.model.response.wrapper.BaseResponse
 import com.sopt.instagram.databinding.ActivityDmBinding
 import com.sopt.instagram.ui.main.MainActivity
 import com.sopt.instagram.util.binding.BindingActivity
+import com.sopt.instagram.util.extension.showSnackbar
+import com.sopt.instagram.util.extension.showToast
 import retrofit2.Call
 import retrofit2.Response
 
@@ -50,11 +52,7 @@ class DmActivity : BindingActivity<ActivityDmBinding>(R.layout.activity_dm) {
                     call: Call<BaseResponse<List<DmstoryResponseDto>>>,
                     t: Throwable,
                 ) {
-                    Snackbar.make(
-                        binding.root,
-                        "서버 통신 실패",
-                        Snackbar.LENGTH_SHORT,
-                    ).show()
+                    showToast("서버 통신 실패")
                 }
             })
     }
@@ -77,11 +75,7 @@ class DmActivity : BindingActivity<ActivityDmBinding>(R.layout.activity_dm) {
                     call: Call<BaseResponse<List<DmListResponseDto>>>,
                     t: Throwable,
                 ) {
-                    Snackbar.make(
-                        binding.root,
-                        "서버 통신 실패",
-                        Snackbar.LENGTH_SHORT,
-                    ).show()
+                    showToast("서버 통신 실패")
                 }
             })
     }
