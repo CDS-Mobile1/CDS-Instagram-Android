@@ -24,12 +24,11 @@ class StoryViewModel @Inject constructor(
 
     val currentMember = MutableLiveData<Member>()
 
-    init {
-        getMember()
+    fun setMemberList(memberList: List<Member>) {
+        _memberList.value = memberList
     }
 
-    private fun getMember() {
-        // TODO: 서버 통신으로 스토리 멤버 리스트 가져오기
+    fun getDummyMember() {
         val members = listOf(
             Member(
                 id = 1,
