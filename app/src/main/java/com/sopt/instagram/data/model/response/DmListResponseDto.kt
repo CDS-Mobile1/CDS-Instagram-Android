@@ -13,10 +13,11 @@ data class DmListResponseDto(
     val memberName: String,
     @SerialName("latestMessage")
     val latestMessage: String,
-    @SerialName("issSpecial")
-    val issSpecial: Boolean,
-    @SerialName("isFavorite")
-    val isFavorite: Boolean,
     @SerialName("storyExists")
     val storyExists: Boolean,
+    @SerialName("special")
+    val special: Boolean,
+    @SerialName("favorite")
+    val favorite: Boolean,
+
 )
