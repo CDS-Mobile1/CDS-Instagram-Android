@@ -10,13 +10,12 @@ data class GetMemberStoryResponseDto(
     val storyId: Int,
     @SerialName("storyImageUrl")
     val storyImageUrl: String,
-    // TODO: pastTime 추가
-//    @SerialName("pastTime")
-//    val pastTime: String,
+    @SerialName("pastTime")
+    val pastTime: String,
 ) {
     fun toStory() = Story(
         id = storyId,
         image = storyImageUrl,
-        time = "10분",
+        time = pastTime,
     )
 }

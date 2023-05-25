@@ -12,14 +12,13 @@ data class GetTaggedMemberResponseDto(
     val memberImageUrl: String,
     @SerialName("memberName")
     val memberName: String,
-    // TODO: memberIntroduction 추가
-//    @SerialName("memberIntroduction")
-//    val memberIntroduction: String,
+    @SerialName("memberIntroduction")
+    val memberIntroduction: String,
 ) {
     fun toTag() = Tag(
         id = memberId,
         profileImage = memberImageUrl,
         name = memberName,
-        introduction = "소개글을 연결해주세요.",
+        introduction = memberIntroduction,
     )
 }

@@ -17,6 +17,7 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // TODO: 인텐트로 멤버 리스트 받아오기
         initViewPager()
         setCurrentMember()
         setupStoryUiState()
@@ -26,7 +27,6 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
         with(binding) {
             vpStory.adapter = StoryAdapter(
                 fragmentActivity = this@StoryActivity,
-                // TODO: 한 명의 스토리만 보여주는 경우 처리
                 storyListSize = viewModel.memberList.size,
             )
             vpStory.setPageTransformer(CubeOutRotationTransformer())
