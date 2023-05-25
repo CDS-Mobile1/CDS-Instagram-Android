@@ -1,6 +1,8 @@
 package com.sopt.instagram.di
 
+import com.sopt.instagram.data.repository.GetFriendStoriesRepositoryImpl
 import com.sopt.instagram.data.repository.GetPostRepositoryImpl
+import com.sopt.instagram.domain.repository.GetFriendStoriesRepository
 import com.sopt.instagram.domain.repository.GetPostRepository
 import dagger.Binds
 import dagger.Module
@@ -14,6 +16,12 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindsGetPostRepository(
-        authRepositoryImpl: GetPostRepositoryImpl,
+        getPostRepositoryImpl: GetPostRepositoryImpl,
     ): GetPostRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindsGetFriendStories(
+        getFriendStoriesRepositoryImpl: GetFriendStoriesRepositoryImpl,
+    ): GetFriendStoriesRepository
 }
