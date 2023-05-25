@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityNewPostBinding
 import com.sopt.instagram.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activity_new_post) {
     private val itemTouchHelper by lazy { ItemTouchHelper(ItemTouchCallback(NewPostImageAdapter())) }
 
