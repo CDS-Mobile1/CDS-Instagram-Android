@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="data"
+            type="com.sopt.instagram.domain.entity.Tag" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +19,7 @@
 
         <ImageView
             android:id="@+id/iv_tag_member_profile"
+            setCircleImage="@{data.profileImage}"
             android:layout_width="52dp"
             android:layout_height="0dp"
             android:layout_margin="3dp"
@@ -30,6 +34,7 @@
             style="@style/AndEngBody1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{data.name}"
             app:layout_constraintEnd_toStartOf="@id/tv_tag_follow"
             app:layout_constraintStart_toEndOf="@id/iv_tag_member_profile"
             tools:text="koopa" />
@@ -39,6 +44,7 @@
             style="@style/AndKorBody2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{data.introduction}"
             android:textColor="@color/gray1"
             app:layout_constraintEnd_toStartOf="@id/tv_tag_follow"
             app:layout_constraintStart_toEndOf="@id/iv_tag_member_profile"
