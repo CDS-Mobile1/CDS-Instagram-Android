@@ -2,11 +2,11 @@ package com.sopt.instagram.ui.dm
 
 import GetStoryAdapter
 import android.os.Bundle
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.instagram.R
 import com.sopt.instagram.data.ServicePool
 import com.sopt.instagram.data.model.response.DmstoryResponseDto
+import com.sopt.instagram.data.model.response.wrapper.BaseResponse
 import com.sopt.instagram.databinding.ActivityDmBinding
 import com.sopt.instagram.util.binding.BindingActivity
 import retrofit2.Call
@@ -20,46 +20,31 @@ class DmActivity : BindingActivity<ActivityDmBinding>(R.layout.activity_dm) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initStarstory()
     }
 
-    private fun initStory() {
-        dmstoryService.getStories()
-            .enqueue(object : retrofit2.Callback<List<DmstoryResponseDto>> {
-                override fun onResponse(
-                    call: Call<DmstoryResponseDto>,
-                    response: Response<DmstoryResponseDto>,
-                ) {
-                    if (response.isSuccessful) {
-                        Snackbar.make(
-                            binding.root,
-                            "디엠 스토리 조회 성공",
-                            Snackbar.LENGTH_SHORT,
-                        ).show()
+    private fun initStarstory() {
+        dmstoryService.getStories().enqueue(object : retrofit2.Callback<BaseResponse<List<DmstoryResponseDto>>> {
 
-                        binding.rvDmStarred.adapter=GetStoryAdapter()
-                            .apply {
-                                submitList(response.body())
-                            }
-                    } else {
-                        // 실패한 응답
-                        Snackbar.make(
-                            binding.root,
-                            "디엠 스토리 조회 실패",
-                            Snackbar.LENGTH_SHORT,
-                        ).show()
+            override fun onResponse(
+                call: Call<BaseResponse<List<DmstoryResponseDto>>>,
+                response: Response<BaseResponse<List<DmstoryResponseDto>>>,
+            ) {
+                binding.rvDmStarred.adapter = GetStoryAdapter()
+                    .apply {
+                        submitList(response.body()?.data)
                     }
-                }
-
-                override fun onFailure(call: Call<DmstoryResponseDto>, t: Throwable) {
-
-                    Snackbar.make(
-                        binding.root,
-                        "서버 통신 실패",
-                        Snackbar.LENGTH_SHORT,
-                    ).show()
-                }
-            })
+            }
+            override fun onFailure(
+                call: Call<BaseResponse<List<DmstoryResponseDto>>>,
+                t: Throwable,
+            ) {
+                Snackbar.make(
+                    binding.root,
+                    "서버 통신 실패",
+                    Snackbar.LENGTH_SHORT,
+                ).show()
+            }
+        })
     }
 }
-
-
