@@ -61,20 +61,18 @@ class MemberStoryFragment :
                 GetMemberStorySuccess -> setProgressBar()
                 NextStory -> {
                     viewModel.setCurrentStory()
-                    binding.layoutStoryProgressBar.getChildAt(viewModel.storyIndex).background =
-                        AppCompatResources.getDrawable(
-                            requireContext(),
-                            R.drawable.shape_gray5_fill_1000_rect,
-                        )
+                    setProgressBarBackground(
+                        viewModel.storyIndex,
+                        R.drawable.shape_gray5_fill_1000_rect,
+                    )
                 }
 
                 PreviousStory -> {
                     viewModel.setCurrentStory()
-                    binding.layoutStoryProgressBar.getChildAt(viewModel.storyIndex + 1).background =
-                        AppCompatResources.getDrawable(
-                            requireContext(),
-                            R.drawable.shape_gray2_fill_1000_rect,
-                        )
+                    setProgressBarBackground(
+                        viewModel.storyIndex + 1,
+                        R.drawable.shape_gray2_fill_1000_rect,
+                    )
                 }
 
                 NextMember -> {
@@ -97,10 +95,14 @@ class MemberStoryFragment :
                 ),
             )
         }
-        binding.layoutStoryProgressBar.getChildAt(0).background =
+        setProgressBarBackground(0, R.drawable.shape_gray5_fill_1000_rect)
+    }
+
+    private fun setProgressBarBackground(childIndex: Int, backgroundDrawable: Int) {
+        binding.layoutStoryProgressBar.getChildAt(childIndex).background =
             AppCompatResources.getDrawable(
                 requireContext(),
-                R.drawable.shape_gray5_fill_1000_rect,
+                backgroundDrawable,
             )
     }
 
