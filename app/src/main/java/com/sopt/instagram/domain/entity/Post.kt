@@ -1,6 +1,6 @@
 package com.sopt.instagram.domain.entity
 
-data class GetPostEntity(
+data class Post(
     val memberId: Int,
     val memberImageUrl: String,
     val memberName: String,

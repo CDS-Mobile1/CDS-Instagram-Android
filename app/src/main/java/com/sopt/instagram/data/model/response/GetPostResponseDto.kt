@@ -1,6 +1,6 @@
 package com.sopt.instagram.data.model.response
 
-import com.sopt.instagram.domain.entity.GetPostEntity
+import com.sopt.instagram.domain.entity.Post
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -21,7 +21,7 @@ data class GetPostResponseDto(
     @SerialName("storyExists")
     val storyExists: Boolean,
 ) {
-    fun toGetPostEntity() = GetPostEntity(
+    fun toGetPostEntity() = Post(
         memberId = memberId,
         memberImageUrl = memberImageUrl,
         memberName = memberName,

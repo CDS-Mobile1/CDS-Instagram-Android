@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.sopt.instagram.databinding.ItemPostBinding
-import com.sopt.instagram.domain.entity.GetPostEntity
+import com.sopt.instagram.domain.entity.Post
 import com.sopt.instagram.util.DiffCallback
 
-class PostAdapter : ListAdapter<GetPostEntity, PostAdapter.PostViewHolder>(diffUtil) {
+class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(diffUtil) {
     class PostViewHolder(private val binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(post: GetPostEntity) {
+        fun onBind(post: Post) {
             with(binding) {
                 data = post
                 ivHomeUserProfileImage.load(post.memberImageUrl)
@@ -39,7 +39,7 @@ class PostAdapter : ListAdapter<GetPostEntity, PostAdapter.PostViewHolder>(diffU
     }
 
     companion object {
-        private val diffUtil = DiffCallback<GetPostEntity>(
+        private val diffUtil = DiffCallback<Post>(
             onItemsTheSame = { old, new -> old.memberId == new.memberId },
             onContentsTheSame = { old, new -> old == new },
         )
