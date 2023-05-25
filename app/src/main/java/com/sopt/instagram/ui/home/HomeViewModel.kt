@@ -3,51 +3,39 @@ package com.sopt.instagram.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sopt.instagram.data.model.response.GetPostResponseDto
+import androidx.lifecycle.viewModelScope
+import com.sopt.instagram.domain.entity.GetPostEntity
+import com.sopt.instagram.domain.repository.GetPostRepository
+import com.sopt.instagram.util.UiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import timber.log.Timber
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
-    private val _postList = MutableLiveData<List<GetPostResponseDto>>()
-    val postList: LiveData<List<GetPostResponseDto>>
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val getPostRepository: GetPostRepository,
+) : ViewModel() {
+    private val _postList = MutableLiveData<List<GetPostEntity>>()
+    val postList: LiveData<List<GetPostEntity>>
         get() = _postList
 
-    // 서버 통신
+    private val _getPostListState = MutableLiveData<UiState>()
+    val getPostListState: LiveData<UiState> get() = _getPostListState
 
-    val mockPostList = listOf<GetPostResponseDto>(
-        GetPostResponseDto(
-            "여기는 게시글 내용이 들어가는 곳인데 이렇게 글이 길어지면 2단으로 위처럼 작성되며 그를 넘어서게 길어지면 ...으로 축약하여 보여주기",
-            listOf<String>(
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-            ),
-            GetPostResponseDto.UserInfo(1, "https://reqres.in/img/faces/7-image.jpg", "seonhwan"),
-        ),
-        GetPostResponseDto(
-            "여기는 게시글 내용이 들어가는 곳인데 이렇게 글이 길어지면 2단으로 위처럼 작성되며 그를 넘어서게 길어지면 ...으로 축약하여 보여주기",
-            listOf<String>(
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-            ),
-            GetPostResponseDto.UserInfo(1, "https://reqres.in/img/faces/7-image.jpg", "seonhwan"),
-        ),
-        GetPostResponseDto(
-            "여기는 게시글 내용이 들어가는 곳인데 이렇게 글이 길어지면 2단으로 위처럼 작성되며 그를 넘어서게 길어지면 ...으로 축약하여 보여주기",
-            listOf<String>(
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-            ),
-            GetPostResponseDto.UserInfo(1, "https://reqres.in/img/faces/7-image.jpg", "seonhwan"),
-        ),
-        GetPostResponseDto(
-            "여기는 게시글 내용이 들어가는 곳인데 이렇게 글이 길어지면 2단으로 위처럼 작성되며 그를 넘어서게 길어지면 ...으로 축약하여 보여주기",
-            listOf<String>(
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-                "https://reqres.in/img/faces/7-image.jpg",
-            ),
-            GetPostResponseDto.UserInfo(1, "https://reqres.in/img/faces/7-image.jpg", "seonhwan"),
-        ),
-    )
+    // 서버 통신
+    fun getPostList() {
+        viewModelScope.launch {
+            getPostRepository.getPostList()
+                .onSuccess { response ->
+                    _postList.value = response
+                    _getPostListState.value = UiState.Success
+                    Timber.tag("getPostListSuccess").d(response?.toString())
+                }
+                .onFailure {
+                    _getPostListState.value = UiState.Failure(null)
+                    Timber.tag("getPostFailure").d(it)
+                }
+        }
+    }
 }
