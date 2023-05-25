@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.FragmentMemberStoryBinding
 import com.sopt.instagram.ui.story.StoryViewModel
+import com.sopt.instagram.ui.story.member.MemberStoryUiState.GetMemberStorySuccess
 import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextMember
 import com.sopt.instagram.ui.story.member.MemberStoryUiState.NextStory
 import com.sopt.instagram.ui.story.member.MemberStoryUiState.PreviousMember
@@ -36,7 +37,6 @@ class MemberStoryFragment :
 
         getIndexStory()
         initStatusBarColor()
-        addProgressBars()
         setupStoryState()
         initStoryTagBtnClickListener()
     }
@@ -55,41 +55,24 @@ class MemberStoryFragment :
         }
     }
 
-    private fun addProgressBars() {
-        for (i in 1..viewModel.storyList.size) {
-            progressBars.add(
-                layoutInflater.inflate(
-                    R.layout.view_story_progress_bar,
-                    binding.layoutStoryProgressBar,
-                ),
-            )
-        }
-        binding.layoutStoryProgressBar.getChildAt(0).background =
-            AppCompatResources.getDrawable(
-                requireContext(),
-                R.drawable.shape_gray5_fill_1000_rect,
-            )
-    }
-
     private fun setupStoryState() {
         viewModel.storyState.observe(viewLifecycleOwner) { state ->
             when (state) {
+                GetMemberStorySuccess -> setProgressBar()
                 NextStory -> {
                     viewModel.setCurrentStory()
-                    binding.layoutStoryProgressBar.getChildAt(viewModel.storyIndex).background =
-                        AppCompatResources.getDrawable(
-                            requireContext(),
-                            R.drawable.shape_gray5_fill_1000_rect,
-                        )
+                    setProgressBarBackground(
+                        viewModel.storyIndex,
+                        R.drawable.shape_gray5_fill_1000_rect,
+                    )
                 }
 
                 PreviousStory -> {
                     viewModel.setCurrentStory()
-                    binding.layoutStoryProgressBar.getChildAt(viewModel.storyIndex + 1).background =
-                        AppCompatResources.getDrawable(
-                            requireContext(),
-                            R.drawable.shape_gray2_fill_1000_rect,
-                        )
+                    setProgressBarBackground(
+                        viewModel.storyIndex + 1,
+                        R.drawable.shape_gray2_fill_1000_rect,
+                    )
                 }
 
                 NextMember -> {
@@ -103,9 +86,31 @@ class MemberStoryFragment :
         }
     }
 
+    private fun setProgressBar() {
+        for (i in 1..viewModel.storyList.size) {
+            progressBars.add(
+                layoutInflater.inflate(
+                    R.layout.view_story_progress_bar,
+                    binding.layoutStoryProgressBar,
+                ),
+            )
+        }
+        setProgressBarBackground(0, R.drawable.shape_gray5_fill_1000_rect)
+    }
+
+    private fun setProgressBarBackground(childIndex: Int, backgroundDrawable: Int) {
+        binding.layoutStoryProgressBar.getChildAt(childIndex).background =
+            AppCompatResources.getDrawable(
+                requireContext(),
+                backgroundDrawable,
+            )
+    }
+
     private fun initStoryTagBtnClickListener() {
         binding.btnStoryTag.setOnSingleClickListener {
-            TagDialogFragment().show(parentFragmentManager, this.tag)
+            viewModel.currentStory.value?.id?.let { id ->
+                TagDialogFragment.newInstance(id).show(parentFragmentManager, TAG_DIALOG)
+            }
         }
     }
 
@@ -120,8 +125,8 @@ class MemberStoryFragment :
     }
 
     companion object {
-
-        private const val KEY_INDEX_STORY = "KeyIndexStory"
+        private const val KEY_INDEX_STORY = "IndexStory"
+        private const val TAG_DIALOG = "TagDialog"
 
         @JvmStatic
         fun newInstance(index: Int) = MemberStoryFragment().apply {
