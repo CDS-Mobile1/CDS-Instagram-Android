@@ -20,6 +20,8 @@ import javax.inject.Singleton
 object RetrofitModule {
     private const val CONTENT_TYPE = "Content-Type"
     private const val APPLICATION_JSON = "application/json"
+    private const val AUTHORIZATION = "Authorization"
+    private const val USER_ID = "1"
 
     @Provides
     @Singleton
@@ -30,7 +32,7 @@ object RetrofitModule {
                     request()
                         .newBuilder()
                         .addHeader(CONTENT_TYPE, APPLICATION_JSON)
-                        // TODO : Authorization 헤더 추가
+                        .addHeader(AUTHORIZATION, USER_ID)
                         .build(),
                 )
             }
@@ -55,7 +57,7 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun providesSoptRetrofit(
+    fun providesInstagramRetrofit(
         client: OkHttpClient,
     ): Retrofit =
         Retrofit.Builder()

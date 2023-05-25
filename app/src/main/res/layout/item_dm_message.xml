@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="22dp"
-        android:background="@drawable/ic_dm_star_press"
+        android:background="@drawable/btn_dm_star"
         app:layout_constraintBottom_toBottomOf="@+id/tv_dm_msg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_dm_msg_name" />

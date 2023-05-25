@@ -1,4 +1,4 @@
-- #issue number
+- closed #issue number
 
 ## *⛳️ Work Description*
 - task1
