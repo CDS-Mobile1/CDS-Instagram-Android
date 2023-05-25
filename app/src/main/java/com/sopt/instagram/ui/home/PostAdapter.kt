@@ -4,20 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.sopt.instagram.data.model.response.GetPostResponseDto
+import coil.load
 import com.sopt.instagram.databinding.ItemPostBinding
+import com.sopt.instagram.domain.entity.Post
 import com.sopt.instagram.util.DiffCallback
 
-class PostAdapter : ListAdapter<GetPostResponseDto, PostAdapter.PostViewHolder>(diffUtil) {
+class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(diffUtil) {
     class PostViewHolder(private val binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(post: GetPostResponseDto) {
+        fun onBind(post: Post) {
             with(binding) {
                 data = post
-                Glide.with(root)
-                    .load(post.userInfo.memberImageUrl)
-                    .into(ivHomeUserProfileImage)
+                ivHomeUserProfileImage.load(post.memberImageUrl)
                 vpHomePostImage.adapter = PostImagesAdapter().apply {
                     submitList(post.imageUrlList)
                 }
@@ -41,8 +39,8 @@ class PostAdapter : ListAdapter<GetPostResponseDto, PostAdapter.PostViewHolder>(
     }
 
     companion object {
-        private val diffUtil = DiffCallback<GetPostResponseDto>(
-            onItemsTheSame = { old, new -> old.userInfo.memberId == new.userInfo.memberId },
+        private val diffUtil = DiffCallback<Post>(
+            onItemsTheSame = { old, new -> old.memberId == new.memberId },
             onContentsTheSame = { old, new -> old == new },
         )
     }
