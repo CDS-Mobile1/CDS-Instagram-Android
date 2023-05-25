@@ -11,7 +11,7 @@ import com.sopt.instagram.util.extension.hideKeyboard
 abstract class BindingActivity<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,
 ) : AppCompatActivity() {
-    //abstract val isFavorites: Boolean
+
     protected lateinit var binding: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
