@@ -19,18 +19,7 @@ object StoryApiFactory {
     inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
 }
 
-object StarApiFactory {
-    val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
-            .build()
-    }
-
-    inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
-}
-
 object ServicePool {
     val dmstoryService = StoryApiFactory.create<DmstoryService>()
-    val dmstarService = StarApiFactory.create<DmstarredService>()
+    val dmstarService = StoryApiFactory.create<DmstarredService>()
 }
