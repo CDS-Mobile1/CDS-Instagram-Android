@@ -38,8 +38,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                     requireContext().showToast("erererer")
                 }
 
-                else -> {
-                    // nothing
+                is UiState.Error -> {
+                    requireContext().showToast("error")
                 }
             }
         }
