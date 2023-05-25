@@ -28,22 +28,24 @@
         <View
             android:id="@+id/view_tag_divider"
             android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_tag_title"
-            android:background="@color/gray5"
+            android:layout_height="1dp"
             android:layout_marginTop="14dp"
-            android:layout_height="1dp" />
+            android:background="@color/gray5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_tag_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_tag"
-            android:paddingTop="7dp"
-            android:clipToPadding="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:listitem="@layout/item_tag_member"
-            app:layout_constraintTop_toBottomOf="@id/view_tag_divider"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingTop="7dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_tag_divider"
+            tools:listitem="@layout/item_tag_member" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
