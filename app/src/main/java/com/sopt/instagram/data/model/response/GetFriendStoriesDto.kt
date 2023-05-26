@@ -16,9 +16,9 @@ data class GetFriendStoriesDto(
     val memberName: String,
 ) {
     fun toGetFriendStoriesEntity() = StoryProfile(
+        id = memberId,
+        profile = memberImageUrl,
+        name = memberName,
         isSpecial = isSpecial,
-        memberId = memberId,
-        memberImageUrl = memberImageUrl,
-        memberName = memberName,
     )
 }

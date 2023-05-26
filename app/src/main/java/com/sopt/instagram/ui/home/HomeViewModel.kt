@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sopt.instagram.domain.entity.StoryProfile
 import com.sopt.instagram.domain.entity.Post
+import com.sopt.instagram.domain.entity.StoryProfile
 import com.sopt.instagram.domain.repository.GetFriendStoriesRepository
 import com.sopt.instagram.domain.repository.GetPostRepository
 import com.sopt.instagram.util.UiState
@@ -24,20 +24,23 @@ class HomeViewModel @Inject constructor(
         get() = _postList
 
     private val _getPostListState = MutableLiveData<UiState>()
-    val getPostListState: LiveData<UiState> get() = _getPostListState
+    val getPostListState: LiveData<UiState>
+        get() = _getPostListState
 
     private val _StoryProfileList = MutableLiveData<List<StoryProfile>>()
-    val storyProfileList: LiveData<List<StoryProfile>> get() = _StoryProfileList
+    val storyProfileList: LiveData<List<StoryProfile>>
+        get() = _StoryProfileList
 
     private val _getFriendStoriesListState = MutableLiveData<UiState>()
-    val getFriendStoriesListState: LiveData<UiState> get() = _getFriendStoriesListState
+    val getFriendStoriesListState: LiveData<UiState>
+        get() = _getFriendStoriesListState
 
     init {
         getPostList()
         getFriendStoriesList()
     }
 
-    fun getPostList() {
+    private fun getPostList() {
         viewModelScope.launch {
             getPostRepository.getPostList()
                 .onSuccess { response ->

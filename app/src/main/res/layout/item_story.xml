@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="data"
+            type="com.sopt.instagram.domain.entity.StoryProfile" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_story_item"
@@ -14,6 +19,7 @@
 
         <ImageView
             android:id="@+id/iv_story_item_profile"
+            setCircleImage="@{data.profile}"
             android:layout_width="72dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray3_fill_oval"
@@ -30,6 +36,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:gravity="center"
+            android:text="@{data.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_story_item_profile"
