@@ -1,7 +1,7 @@
 package com.sopt.instagram.domain.repository
 
-import com.sopt.instagram.domain.entity.FriendStory
+import com.sopt.instagram.domain.entity.StoryProfile
 
 interface GetFriendStoriesRepository {
-    suspend fun getFriendStories(): Result<List<FriendStory>?>
+    suspend fun getFriendStories(): Result<List<StoryProfile>?>
 }

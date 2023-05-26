@@ -1,6 +1,6 @@
 package com.sopt.instagram.data.model.response
 
-import com.sopt.instagram.domain.entity.FriendStory
+import com.sopt.instagram.domain.entity.StoryProfile
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -15,7 +15,7 @@ data class GetFriendStoriesDto(
     @SerialName("memberName")
     val memberName: String,
 ) {
-    fun toGetFriendStoriesEntity() = FriendStory(
+    fun toGetFriendStoriesEntity() = StoryProfile(
         isSpecial = isSpecial,
         memberId = memberId,
         memberImageUrl = memberImageUrl,

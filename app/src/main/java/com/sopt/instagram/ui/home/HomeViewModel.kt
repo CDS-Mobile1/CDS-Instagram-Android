@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sopt.instagram.domain.entity.FriendStory
+import com.sopt.instagram.domain.entity.StoryProfile
 import com.sopt.instagram.domain.entity.Post
 import com.sopt.instagram.domain.repository.GetFriendStoriesRepository
 import com.sopt.instagram.domain.repository.GetPostRepository
@@ -26,8 +26,8 @@ class HomeViewModel @Inject constructor(
     private val _getPostListState = MutableLiveData<UiState>()
     val getPostListState: LiveData<UiState> get() = _getPostListState
 
-    private val _friendStoryList = MutableLiveData<List<FriendStory>>()
-    val friendStoryList: LiveData<List<FriendStory>> get() = _friendStoryList
+    private val _StoryProfileList = MutableLiveData<List<StoryProfile>>()
+    val storyProfileList: LiveData<List<StoryProfile>> get() = _StoryProfileList
 
     private val _getFriendStoriesListState = MutableLiveData<UiState>()
     val getFriendStoriesListState: LiveData<UiState> get() = _getFriendStoriesListState
@@ -52,11 +52,11 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getFriendStoriesList() {
+    private fun getFriendStoriesList() {
         viewModelScope.launch {
             getFriendStoriesRepository.getFriendStories()
                 .onSuccess { response ->
-                    _friendStoryList.value = response
+                    _StoryProfileList.value = response
                     _getFriendStoriesListState.value = UiState.Success
                 }
                 .onFailure {

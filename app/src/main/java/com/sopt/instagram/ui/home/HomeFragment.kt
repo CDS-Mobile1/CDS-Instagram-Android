@@ -20,10 +20,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         initAdapter()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
     private fun initAdapter() {
         viewModel.getPostListState.observe(viewLifecycleOwner) { state ->
             when (state) {
@@ -34,7 +30,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 }
 
                 is UiState.Failure -> {
-                    requireContext().showToast("erererer")
+                    requireContext().showToast("fail")
                 }
 
                 is UiState.Error -> {
