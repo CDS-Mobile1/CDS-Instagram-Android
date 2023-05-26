@@ -4,7 +4,7 @@
 <br>
 
 ## CONTRIBUTORS
-| 김선환<br/>([@0zlrlo](https://github.com/0zlrlo)) | 박민주<br/>([@minju1459](https://github.com/minju1459)) | 전채연<br/>([@b1urrrr](https://github.com/b1urrrr)) |
+| 김선환<br/>([@SeonHwan-Kim](https://github.com/SeonHwan-Kim)) | 박민주<br/>([@minju1459](https://github.com/minju1459)) | 전채연<br/>([@b1urrrr](https://github.com/b1urrrr)) |
 | :---: | :---: | :---: |
 | <img width="540" src="https://avatars.githubusercontent.com/u/96679633?v=4"/> | <img width="540" src="https://avatars.githubusercontent.com/u/76741702?v=4"/> | <img width="540" src="https://avatars.githubusercontent.com/u/70993562?v=4"/> |
 | `Main`<br/>`New Post` | `DM` | `Story` |
