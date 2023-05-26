@@ -16,24 +16,28 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>()
 
+    private var postAdapter: PostAdapter? = null
     private var storyProfileAdapter: StoryProfileAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initAdapter()
+        setupGetPostListState()
         setupGetFriendListState()
     }
 
     private fun initAdapter() {
+        postAdapter = PostAdapter()
         storyProfileAdapter = StoryProfileAdapter()
+    }
 
+    private fun setupGetPostListState() {
         viewModel.getPostListState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Success -> {
-                    binding.rvHomePost.adapter = PostAdapter().apply {
-                        submitList(viewModel.postList.value)
-                    }
+                    binding.rvHomePost.adapter = postAdapter
+                    postAdapter?.submitList(viewModel.postList.value)
                 }
 
                 is Failure -> {
@@ -51,9 +55,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         viewModel.getFriendStoriesListState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Success -> {
-                    binding.rvHomeStory.adapter = StoryProfileAdapter().apply {
-                        submitList(viewModel.storyProfileList.value)
-                    }
+                    binding.rvHomeStory.adapter = storyProfileAdapter
+                    storyProfileAdapter?.submitList(viewModel.storyProfileList.value)
                 }
 
                 is Failure -> {}
@@ -64,6 +67,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     override fun onDestroyView() {
         super.onDestroyView()
+        postAdapter = null
         storyProfileAdapter = null
     }
 }

@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
                 }
                 .onFailure {
                     _getPostListState.value = UiState.Failure(null)
-                    Timber.tag("getPostFailure").d(it)
+                    Timber.tag("getPostFailure").e(it)
                 }
         }
     }

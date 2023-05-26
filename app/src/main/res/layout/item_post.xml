@@ -12,31 +12,43 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <View
+            android:id="@+id/view_post_profile_stroke"
+            android:layout_width="38dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_story_profile_read"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_home_user_profile_image"
             setCircleImage="@{data.memberImageUrl}"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/shape_gray3_fill_oval"
+            app:layout_constraintBottom_toBottomOf="@id/view_post_profile_stroke"
+            app:layout_constraintEnd_toEndOf="@id/view_post_profile_stroke"
+            app:layout_constraintStart_toStartOf="@id/view_post_profile_stroke"
+            app:layout_constraintTop_toTopOf="@id/view_post_profile_stroke" />
 
         <TextView
             android:id="@+id/tv_home_user_name"
             style="@style/AndEngBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:text="@{data.memberName}"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/iv_home_user_profile_image"
-            app:layout_constraintStart_toEndOf="@id/iv_home_user_profile_image"
-            app:layout_constraintTop_toTopOf="@id/iv_home_user_profile_image"
+            app:layout_constraintBottom_toBottomOf="@id/view_post_profile_stroke"
+            app:layout_constraintStart_toEndOf="@id/view_post_profile_stroke"
+            app:layout_constraintTop_toTopOf="@id/view_post_profile_stroke"
             tools:text="stepie0o" />
 
         <ImageButton
@@ -73,53 +85,45 @@
             app:spi_dotColor="@color/gray4"
             app:spi_dotSelectedColor="@color/blue" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_home_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_home_like"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vp_home_post_image" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_home_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:background="@android:color/transparent"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_home_comment"
             app:layout_constraintBottom_toBottomOf="@id/ib_home_like"
             app:layout_constraintStart_toEndOf="@+id/ib_home_like"
             app:layout_constraintTop_toTopOf="@id/ib_home_like" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_home_dm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:background="@android:color/transparent"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_home_dm"
             app:layout_constraintBottom_toBottomOf="@id/ib_home_comment"
             app:layout_constraintStart_toEndOf="@id/ib_home_comment"
             app:layout_constraintTop_toTopOf="@id/ib_home_comment" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_home_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
             android:src="@drawable/ic_home_save"
             app:layout_constraintBottom_toBottomOf="@id/ib_home_dm"
             app:layout_constraintEnd_toEndOf="parent"
@@ -144,8 +148,7 @@
             style="@style/AndKorBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="좋아요"
+            android:text=" · 좋아요"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_home_like_user"
@@ -159,9 +162,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:text="7"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/tv_home_like_user"
             app:layout_constraintStart_toEndOf="@id/tv_home_like"
             app:layout_constraintTop_toTopOf="@id/tv_home_like_user" />
@@ -173,8 +173,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
             android:text="개"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/tv_home_like_user"
             app:layout_constraintStart_toEndOf="@id/tv_home_like_number"
             app:layout_constraintTop_toTopOf="@id/tv_home_like_user" />
@@ -188,8 +186,6 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{data.content}"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_home_like_user"
@@ -201,11 +197,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:text="댓글 1개 보기"
             android:textColor="@color/gray3"
-            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/tv_home_post_body"
-            app:layout_constraintTop_toBottomOf="@id/tv_home_post_body"
-            tools:text="댓글 1개 보기" />
-
+            app:layout_constraintTop_toBottomOf="@id/tv_home_post_body" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

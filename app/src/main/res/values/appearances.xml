@@ -58,8 +58,8 @@
     </style>
 
     <style name="AndEngBody2" parent="TextAppearance.Instagram">
-        <item name="fontFamily">@font/font_roboto_medium</item>
-        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/font_roboto_regular</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AndEngBody3" parent="TextAppearance.Instagram">
@@ -73,12 +73,12 @@
     </style>
 
     <style name="AndNumber1" parent="TextAppearance.Instagram">
-        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="fontFamily">@font/font_noto_sans_kr_bold</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="AndNumber2" parent="TextAppearance.Instagram">
-        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="fontFamily">@font/font_noto_sans_kr_bold</item>
         <item name="android:textSize">12sp</item>
     </style>
 </resources>
