@@ -1,15 +1,11 @@
 package com.sopt.instagram.data.model.response
 
-import com.sopt.instagram.domain.entity.Post
+import com.sopt.instagram.domain.entity.FriendStory
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GetPostResponseDto(
-    @SerialName("content")
-    val content: String,
-    @SerialName("imageUrlList")
-    val imageUrlList: List<String>,
+data class GetFriendStoriesDto(
     @SerialName("isSpecial")
     val isSpecial: Boolean,
     @SerialName("memberId")
@@ -18,16 +14,11 @@ data class GetPostResponseDto(
     val memberImageUrl: String,
     @SerialName("memberName")
     val memberName: String,
-    @SerialName("storyExists")
-    val storyExists: Boolean,
 ) {
-    fun toGetPostEntity() = Post(
+    fun toGetFriendStoriesEntity() = FriendStory(
+        isSpecial = isSpecial,
         memberId = memberId,
         memberImageUrl = memberImageUrl,
         memberName = memberName,
-        isSpecial = isSpecial,
-        storyExists = storyExists,
-        content = content,
-        imageUrlList = imageUrlList,
     )
 }

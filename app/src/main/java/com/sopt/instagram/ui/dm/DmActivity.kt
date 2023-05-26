@@ -3,7 +3,6 @@ package com.sopt.instagram.ui.dm
 import GetStoryAdapter
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import com.sopt.instagram.R
 import com.sopt.instagram.data.ServicePool
 import com.sopt.instagram.data.model.response.DmListResponseDto
@@ -12,7 +11,6 @@ import com.sopt.instagram.data.model.response.wrapper.BaseResponse
 import com.sopt.instagram.databinding.ActivityDmBinding
 import com.sopt.instagram.ui.main.MainActivity
 import com.sopt.instagram.util.binding.BindingActivity
-import com.sopt.instagram.util.extension.showSnackbar
 import com.sopt.instagram.util.extension.showToast
 import retrofit2.Call
 import retrofit2.Response
