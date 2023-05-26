@@ -2,6 +2,7 @@ package com.sopt.instagram.di
 
 import com.sopt.instagram.data.service.GetFriendStoriesService
 import com.sopt.instagram.data.service.GetPostService
+import com.sopt.instagram.data.service.PostNewPostService
 import com.sopt.instagram.data.service.StoryService
 import dagger.Module
 import dagger.Provides
@@ -27,4 +28,9 @@ object ServiceModule {
     @Singleton
     fun getFriendStoriesService(retrofit: Retrofit): GetFriendStoriesService =
         retrofit.create(GetFriendStoriesService::class.java)
+
+    @Provides
+    @Singleton
+    fun postNewPostService(retrofit: Retrofit): PostNewPostService =
+        retrofit.create(PostNewPostService::class.java)
 }
