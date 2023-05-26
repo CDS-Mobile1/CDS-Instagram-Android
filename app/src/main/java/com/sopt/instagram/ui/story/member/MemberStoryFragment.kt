@@ -36,7 +36,6 @@ class MemberStoryFragment :
         binding.vm = viewModel
 
         getIndexStory()
-        initStatusBarColor()
         setupStoryState()
         initStoryTagBtnClickListener()
     }
@@ -45,14 +44,6 @@ class MemberStoryFragment :
         arguments ?: return
         _storyIndex = arguments?.getInt(KEY_INDEX_STORY)
         binding.index = _storyIndex
-    }
-
-    private fun initStatusBarColor() {
-        with(requireActivity()) {
-            window.statusBarColor = getColor(R.color.black)
-            // TODO: use WindowInsetsController instead of systemUiVisibility
-            window.decorView.systemUiVisibility = 0
-        }
     }
 
     private fun setupStoryState() {
@@ -117,11 +108,6 @@ class MemberStoryFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         _storyIndex = null
-        with(requireActivity()) {
-            window.statusBarColor = getColor(R.color.white)
-            // TODO: use WindowInsetsController instead of systemUiVisibility
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
     }
 
     companion object {
