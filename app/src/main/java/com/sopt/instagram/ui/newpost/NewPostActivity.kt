@@ -13,7 +13,9 @@ import com.sopt.instagram.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activity_new_post) {
+class NewPostActivity :
+    BindingActivity<ActivityNewPostBinding>(R.layout.activity_new_post),
+    BackButtonDialogInterface {
     private val itemTouchHelper by lazy { ItemTouchHelper(ItemTouchCallback(NewPostImageAdapter())) }
     private val viewModel by viewModels<NewPostViewModel>()
 
@@ -60,10 +62,15 @@ class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activit
             }
 
             else -> {
-                if (!isFinishing) finish()
+                val dialog = BackButtonDialog(this)
+                dialog.show(supportFragmentManager, "BackButtonDialog")
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onClickDeleteButton(id: Int) {
+        if (!isFinishing) finish()
     }
 
     private fun initNewPostImageAdapter() {
