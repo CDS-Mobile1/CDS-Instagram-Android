@@ -32,7 +32,6 @@ class GetLIstAdapter : ListAdapter<DmListResponseDto, GetLIstAdapter.GetListView
                 Glide.with(root)
                     .load(item.memberImageUrl)
                     .into(btnDmMsgPhoto)
-
             }
         }
     }
