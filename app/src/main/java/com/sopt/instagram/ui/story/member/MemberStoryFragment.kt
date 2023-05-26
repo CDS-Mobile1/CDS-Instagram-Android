@@ -28,7 +28,7 @@ class MemberStoryFragment :
     private val storyIndex
         get() = requireNotNull(_storyIndex)
 
-    private val progressBars: MutableList<View> = mutableListOf()
+    private var progressBars: MutableList<View>? = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -79,7 +79,7 @@ class MemberStoryFragment :
 
     private fun setProgressBar() {
         for (i in 1..viewModel.storyList.size) {
-            progressBars.add(
+            progressBars?.add(
                 layoutInflater.inflate(
                     R.layout.view_story_progress_bar,
                     binding.layoutStoryProgressBar,
@@ -108,6 +108,7 @@ class MemberStoryFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         _storyIndex = null
+        progressBars = null
     }
 
     companion object {
