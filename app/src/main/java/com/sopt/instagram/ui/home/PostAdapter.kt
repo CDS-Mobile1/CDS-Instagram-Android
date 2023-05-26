@@ -48,6 +48,7 @@ class PostAdapter : ListAdapter<Post, RecyclerView.ViewHolder>(diffUtil) {
                         ),
                     )
                     ContextCompat.startActivity(root.context, intent, null)
+                    // TODO: 뷰 리스트 원소도 READ 처리
                     viewPostProfileStroke.background = AppCompatResources.getDrawable(
                         root.context,
                         R.drawable.bg_story_profile_read,

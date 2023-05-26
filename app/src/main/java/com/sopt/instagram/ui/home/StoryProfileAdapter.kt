@@ -55,6 +55,7 @@ class StoryProfileAdapter : ListAdapter<StoryProfile, StoryProfileViewHolder>(di
                         putExtra(EXTRA_MEMBER_INDEX, memberIndex)
                         ContextCompat.startActivity(root.context, this, null)
                     }
+                    // TODO: 뷰 리스트 원소도 READ 처리
                     viewStoryItemStroke.background = AppCompatResources.getDrawable(
                         root.context,
                         R.drawable.bg_story_profile_read,
