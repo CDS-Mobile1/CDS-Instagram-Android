@@ -8,5 +8,5 @@ data class NewPostRequestDto(
     @SerialName("content")
     val content: String,
     @SerialName("imageUrlList")
-    val imageUrlList: List<String>
+    val imageUrlList: List<String>,
 )
