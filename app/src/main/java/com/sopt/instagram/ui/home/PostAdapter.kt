@@ -1,14 +1,20 @@
 package com.sopt.instagram.ui.home
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ItemHomeRecommendFriendBinding
 import com.sopt.instagram.databinding.ItemPostBinding
+import com.sopt.instagram.domain.entity.Member
 import com.sopt.instagram.domain.entity.Post
+import com.sopt.instagram.ui.story.StoryActivity
+import com.sopt.instagram.ui.story.StoryActivity.Companion.EXTRA_MEMBER_LIST
 import com.sopt.instagram.util.DiffCallback
+import timber.log.Timber
 
 class PostAdapter : ListAdapter<Post, RecyclerView.ViewHolder>(diffUtil) {
     class PostViewHolder(private val binding: ItemPostBinding) :
@@ -20,6 +26,27 @@ class PostAdapter : ListAdapter<Post, RecyclerView.ViewHolder>(diffUtil) {
                     submitList(post.imageUrlList)
                 }
                 spiHomeImageIndicator.attachToPager(vpHomePostImage)
+                onClickMemberImage(binding, post)
+            }
+        }
+
+        private fun onClickMemberImage(binding: ItemPostBinding, post: Post) {
+            binding.ivHomeUserProfileImage.setOnClickListener {
+                if (post.storyExists) {
+                    Timber.tag("onCLickMemberImage").d("clickclick")
+                    val intent = Intent(binding.root.context, StoryActivity::class.java)
+                    intent.putExtra(
+                        EXTRA_MEMBER_LIST,
+                        arrayListOf<Member>(
+                            Member(
+                                post.memberId,
+                                post.memberImageUrl,
+                                post.memberName,
+                            ),
+                        ),
+                    )
+                    ContextCompat.startActivity(binding.root.context, intent, null)
+                }
             }
         }
     }
