@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DmstarredRequestDto(
+
     @SerialName("isFavorites")
     val isFavorites: Boolean
 )
