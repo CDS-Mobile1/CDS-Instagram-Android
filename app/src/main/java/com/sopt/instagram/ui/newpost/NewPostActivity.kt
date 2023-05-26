@@ -1,5 +1,6 @@
 package com.sopt.instagram.ui.newpost
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -7,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityNewPostBinding
+import com.sopt.instagram.ui.main.MainActivity
 import com.sopt.instagram.util.UiState
 import com.sopt.instagram.util.binding.BindingActivity
 import com.sopt.instagram.util.extension.showToast
@@ -47,6 +49,7 @@ class NewPostActivity :
                 viewModel.postNewPostState.observe(this) { state ->
                     when (state) {
                         is UiState.Success -> {
+                            startActivity(Intent(this, MainActivity::class.java))
                             if (!isFinishing) finish()
                         }
 
@@ -70,6 +73,7 @@ class NewPostActivity :
     }
 
     override fun onClickDeleteButton(id: Int) {
+        startActivity(Intent(this, MainActivity::class.java))
         if (!isFinishing) finish()
     }
 

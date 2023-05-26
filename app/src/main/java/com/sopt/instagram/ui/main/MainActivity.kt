@@ -41,6 +41,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             when (menu.itemId) {
                 R.id.menu_new_post -> {
                     startActivity(Intent(this, NewPostActivity::class.java))
+                    if (!isFinishing) finish()
                 }
 
                 else -> {}
