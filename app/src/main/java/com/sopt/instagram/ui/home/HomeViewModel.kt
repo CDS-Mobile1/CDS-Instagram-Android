@@ -37,7 +37,7 @@ class HomeViewModel @Inject constructor(
         getFriendStoriesList()
     }
 
-    fun getPostList() {
+    private fun getPostList() {
         viewModelScope.launch {
             getPostRepository.getPostList()
                 .onSuccess { response ->
@@ -52,7 +52,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getFriendStoriesList() {
+    private fun getFriendStoriesList() {
         viewModelScope.launch {
             getFriendStoriesRepository.getFriendStories()
                 .onSuccess { response ->
