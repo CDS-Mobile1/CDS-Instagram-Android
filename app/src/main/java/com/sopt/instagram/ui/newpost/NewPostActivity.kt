@@ -3,15 +3,19 @@ package com.sopt.instagram.ui.newpost
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityNewPostBinding
+import com.sopt.instagram.util.UiState
 import com.sopt.instagram.util.binding.BindingActivity
+import com.sopt.instagram.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activity_new_post) {
     private val itemTouchHelper by lazy { ItemTouchHelper(ItemTouchCallback(NewPostImageAdapter())) }
+    private val viewModel by viewModels<NewPostViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +41,22 @@ class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activit
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_check -> {
-                if (!isFinishing) finish()
+                viewModel.onClickCheckButton(binding.etNewpostContents.text.toString())
+                viewModel.postNewPostState.observe(this) { state ->
+                    when (state) {
+                        is UiState.Success -> {
+                            if (!isFinishing) finish()
+                        }
+
+                        is UiState.Failure -> {
+                            showToast("erererer")
+                        }
+
+                        is UiState.Error -> {
+                            showToast("error")
+                        }
+                    }
+                }
             }
 
             else -> {
@@ -50,11 +69,7 @@ class NewPostActivity : BindingActivity<ActivityNewPostBinding>(R.layout.activit
     private fun initNewPostImageAdapter() {
         binding.rvNewpostImage.adapter = NewPostImageAdapter().apply {
             submitList(
-                listOf(
-                    "https://reqres.in/img/faces/7-image.jpg",
-                    "https://reqres.in/img/faces/8-image.jpg",
-                    "https://reqres.in/img/faces/9-image.jpg",
-                ),
+                viewModel.mockImage,
             )
         }
         itemTouchHelper.attachToRecyclerView(binding.rvNewpostImage)
