@@ -4,20 +4,29 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityMainBinding
 import com.sopt.instagram.ui.home.HomeFragment
 import com.sopt.instagram.ui.newpost.NewPostActivity
 import com.sopt.instagram.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initStatusBarColor()
         initBnvItemSelectedListener()
         initToolBar()
+    }
+
+    private fun initStatusBarColor() {
+        // TODO: use WindowInsetsController instead of systemUiVisibility
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
     }
 
     private fun initBnvItemSelectedListener() {

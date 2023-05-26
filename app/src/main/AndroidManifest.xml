@@ -34,10 +34,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Instagram" />
         <activity
-            android:name=".ui.main.dm.DmActivity"
+            android:name=".ui.story.StoryActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Instagram"/>
+            android:theme="@style/Theme.Instagram" />
+        <activity
+            android:name=".ui.dm.DmActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Instagram" />
     </application>
 
 </manifest>

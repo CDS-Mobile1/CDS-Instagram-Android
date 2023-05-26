@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.sopt.instagram.domain.entity.Tag" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_tag_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/iv_tag_member_profile"
+            setCircleImage="@{data.profileImage}"
+            android:layout_width="52dp"
+            android:layout_height="0dp"
+            android:layout_margin="3dp"
+            android:background="@drawable/shape_gray3_fill_oval"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tag_member_id"
+            style="@style/AndEngBody1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.name}"
+            app:layout_constraintEnd_toStartOf="@id/tv_tag_follow"
+            app:layout_constraintStart_toEndOf="@id/iv_tag_member_profile"
+            tools:text="koopa" />
+
+        <TextView
+            android:id="@+id/tv_tag_member_name"
+            style="@style/AndKorBody2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.introduction}"
+            android:textColor="@color/gray1"
+            app:layout_constraintEnd_toStartOf="@id/tv_tag_follow"
+            app:layout_constraintStart_toEndOf="@id/iv_tag_member_profile"
+            tools:text="사랑을 담은 국밥집" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow_member_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="13dp"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="tv_tag_member_id,tv_tag_member_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_tag_follow"
+            app:layout_constraintStart_toEndOf="@id/iv_tag_member_profile"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tag_follow"
+            style="@style/AndKorBody2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_blue_fill_8_rect"
+            android:paddingHorizontal="29dp"
+            android:paddingVertical="9dp"
+            android:text="@string/tag_member_follow"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
