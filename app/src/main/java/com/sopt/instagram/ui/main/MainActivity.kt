@@ -7,7 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityMainBinding
 import com.sopt.instagram.ui.dm.DmActivity
@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private var dmUnreadCount = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         initStatusBarColor()
         initBnvItemSelectedListener()
         initToolBar()
+        initBadge()
     }
 
     private fun initStatusBarColor() {
@@ -45,13 +47,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             }
             return@setOnItemSelectedListener true
         }
-    }
-
-    private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fcv_main, fragment)
-            .commit()
     }
 
     private fun initToolBar() {
@@ -85,6 +80,20 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         ActivityResultContracts.StartActivityForResult(),
     ) { result: ActivityResult ->
         if (result.resultCode == RESULT_OK) {
+            dmUnreadCount = result.data?.getIntExtra(DM_UNREAD_COUNT, 5)!!
         }
+    }
+
+    private fun initBadge() {
+        val bottomNavigationBadge = binding.bnvMain.getOrCreateBadge(R.id.menu_mypage)
+        val toolbarBadge = binding.tbMain
+
+        if (dmUnreadCount != 0) {
+            bottomNavigationBadge.backgroundColor = ContextCompat.getColor(this, R.color.red)
+        }
+    }
+
+    companion object {
+        private const val DM_UNREAD_COUNT = "dmUnreadCount"
     }
 }
