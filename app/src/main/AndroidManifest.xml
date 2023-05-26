@@ -18,11 +18,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.newpost.NewPostActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Instagram" />
-        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -33,6 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.newpost.NewPostActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Instagram" />
         <activity
             android:name=".ui.main.dm.DmActivity"
             android:exported="true"
