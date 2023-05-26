@@ -6,6 +6,6 @@ data class Post(
     val memberName: String,
     val isSpecial: Boolean,
     val storyExists: Boolean,
-    val content: String,
+    val content: String? = null,
     val imageUrlList: List<String>,
 )
