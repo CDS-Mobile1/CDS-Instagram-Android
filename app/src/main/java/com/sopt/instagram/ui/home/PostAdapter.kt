@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ItemHomeRecommendFriendBinding
 import com.sopt.instagram.databinding.ItemPostBinding
@@ -17,7 +16,6 @@ class PostAdapter : ListAdapter<Post, RecyclerView.ViewHolder>(diffUtil) {
         fun onBindPost(post: Post) {
             with(binding) {
                 data = post
-                ivHomeUserProfileImage.load(post.memberImageUrl)
                 vpHomePostImage.adapter = PostImagesAdapter().apply {
                     submitList(post.imageUrlList)
                 }
