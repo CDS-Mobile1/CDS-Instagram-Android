@@ -63,7 +63,7 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
     }
 
     companion object {
-        private const val EXTRA_MEMBER_LIST = "MemberList"
-        private const val EXTRA_MEMBER_INDEX = "MemberIndex"
+        const val EXTRA_MEMBER_LIST = "MemberList"
+        const val EXTRA_MEMBER_INDEX = "MemberIndex"
     }
 }

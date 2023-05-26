@@ -27,7 +27,7 @@ class GetStoryAdapter : ListAdapter<DmstoryResponseDto, GetStoryAdapter.GetStory
             with(binding) {
                 tvDmStarredName.text = item.memberName
                 Glide.with(root)
-                    .load(item.memberImageUrl)
+                    .load(item.memberImageUrl).circleCrop()
                     .into(btnDmStarredProfile)
             }
         }

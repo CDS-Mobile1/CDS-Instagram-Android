@@ -30,7 +30,7 @@ class GetLIstAdapter : ListAdapter<DmListResponseDto, GetLIstAdapter.GetListView
                 tvDmMsgName.text = item.memberName
                 tvDmMsg.text = item.latestMessage
                 Glide.with(root)
-                    .load(item.memberImageUrl)
+                    .load(item.memberImageUrl).circleCrop()
                     .into(btnDmMsgPhoto)
             }
         }

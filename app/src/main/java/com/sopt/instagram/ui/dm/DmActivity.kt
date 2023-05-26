@@ -28,7 +28,8 @@ class DmActivity : BindingActivity<ActivityDmBinding>(R.layout.activity_dm) {
         initList()
         binding.btnDmBack.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            setResult(RESULT_OK, intent)
+            if (!isFinishing) finish()
         }
     }
 

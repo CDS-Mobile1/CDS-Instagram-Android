@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GetPostResponseDto(
     @SerialName("content")
-    val content: String,
+    val content: String? = null,
     @SerialName("imageUrlList")
     val imageUrlList: List<String>,
     @SerialName("isSpecial")

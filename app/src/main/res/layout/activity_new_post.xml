@@ -16,30 +16,30 @@
             android:id="@+id/tb_newpost_toolbar"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            app:menu="@menu/menu_newpost_toolbar"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_newpost_toolbar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_newpost_image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            tools:listitem="@layout/item_newpost_image"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tb_newpost_toolbar" />
+            app:layout_constraintTop_toBottomOf="@id/tb_newpost_toolbar"
+            tools:listitem="@layout/item_newpost_image" />
 
         <EditText
             android:id="@+id/et_newpost_contents"
             android:layout_width="0dp"
             android:layout_height="280dp"
             android:layout_marginTop="14dp"
-            android:scrollbars="vertical"
             android:gravity="top"
             android:padding="10dp"
+            android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_newpost_image" />

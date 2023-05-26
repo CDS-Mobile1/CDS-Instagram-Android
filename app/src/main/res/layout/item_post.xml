@@ -16,6 +16,7 @@
 
         <ImageView
             android:id="@+id/iv_home_user_profile_image"
+            setCircleImage="@{data.memberImageUrl}"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginStart="12dp"
@@ -25,6 +26,7 @@
 
         <TextView
             android:id="@+id/tv_home_user_name"
+            style="@style/AndEngBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -65,11 +67,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            app:spi_dotSelectedColor="@color/blue"
-            app:spi_dotColor="@color/gray4"
             app:layout_constraintEnd_toEndOf="@id/vp_home_post_image"
             app:layout_constraintStart_toStartOf="@id/vp_home_post_image"
-            app:layout_constraintTop_toBottomOf="@+id/vp_home_post_image" />
+            app:layout_constraintTop_toBottomOf="@+id/vp_home_post_image"
+            app:spi_dotColor="@color/gray4"
+            app:spi_dotSelectedColor="@color/blue" />
 
         <ImageButton
             android:id="@+id/ib_home_like"
@@ -125,9 +127,11 @@
 
         <TextView
             android:id="@+id/tv_home_like_user"
+            style="@style/AndEngBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="@{data.memberName}"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -137,6 +141,7 @@
 
         <TextView
             android:id="@+id/tv_home_like"
+            style="@style/AndKorBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -149,6 +154,7 @@
 
         <TextView
             android:id="@+id/tv_home_like_number"
+            style="@style/AndNumber2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -162,6 +168,7 @@
 
         <TextView
             android:id="@+id/tv_home_like_unit"
+            style="@style/AndKorBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -174,14 +181,15 @@
 
         <TextView
             android:id="@+id/tv_home_post_body"
+            style="@style/AndKorBody2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:text="@{data.content}"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:text="@{data.content}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_home_like_user"
@@ -189,6 +197,7 @@
 
         <TextView
             android:id="@+id/tv_home_post_comment"
+            style="@style/AndKorBody1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

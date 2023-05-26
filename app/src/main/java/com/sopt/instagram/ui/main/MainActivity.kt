@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.fragment.app.Fragment
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityMainBinding
+import com.sopt.instagram.ui.dm.DmActivity
 import com.sopt.instagram.ui.home.HomeFragment
 import com.sopt.instagram.ui.newpost.NewPostActivity
 import com.sopt.instagram.util.binding.BindingActivity
@@ -15,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private var dmUnreadCount = 5
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +26,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         initStatusBarColor()
         initBnvItemSelectedListener()
         initToolBar()
+        initBadge()
     }
 
     private fun initStatusBarColor() {
@@ -36,19 +41,13 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             when (menu.itemId) {
                 R.id.menu_new_post -> {
                     startActivity(Intent(this, NewPostActivity::class.java))
+                    if (!isFinishing) finish()
                 }
 
                 else -> {}
             }
             return@setOnItemSelectedListener true
         }
-    }
-
-    private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fcv_main, fragment)
-            .commit()
     }
 
     private fun initToolBar() {
@@ -62,6 +61,40 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_toolbar_dm -> {
+                moveToDm()
+            }
+
+            else -> {
+            }
+        }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun moveToDm() {
+        val intent = Intent(this, DmActivity::class.java)
+        getResultSignUp.launch(intent)
+    }
+
+    private val getResultSignUp = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            dmUnreadCount = result.data?.getIntExtra(DM_UNREAD_COUNT, 5)!!
+        }
+    }
+
+    private fun initBadge() {
+        val bottomNavigationBadge = binding.bnvMain.getOrCreateBadge(R.id.menu_mypage)
+        val toolbarBadge = binding.tbMain
+
+        if (dmUnreadCount != 0) {
+            bottomNavigationBadge.backgroundColor = ContextCompat.getColor(this, R.color.red)
+        }
+    }
+
+    companion object {
+        private const val DM_UNREAD_COUNT = "dmUnreadCount"
     }
 }
