@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.sopt.instagram.R
 import com.sopt.instagram.databinding.ActivityMainBinding
+import com.sopt.instagram.ui.dm.DmActivity
 import com.sopt.instagram.ui.home.HomeFragment
 import com.sopt.instagram.ui.newpost.NewPostActivity
 import com.sopt.instagram.util.binding.BindingActivity
@@ -62,6 +65,26 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_toolbar_dm -> {
+                moveToDm()
+            }
+
+            else -> {
+            }
+        }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun moveToDm() {
+        val intent = Intent(this, DmActivity::class.java)
+        getResultSignUp.launch(intent)
+    }
+
+    private val getResultSignUp = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult(),
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+        }
     }
 }
