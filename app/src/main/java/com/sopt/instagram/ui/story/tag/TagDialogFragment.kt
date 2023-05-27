@@ -7,7 +7,6 @@ import com.sopt.instagram.R
 import com.sopt.instagram.databinding.FragmentTagDialogBinding
 import com.sopt.instagram.util.binding.BindingBottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class TagDialogFragment :
@@ -30,12 +29,15 @@ class TagDialogFragment :
 
     private fun getTaggedMember() {
         arguments ?: return
-        viewModel.getTagList(arguments?.getInt(KEY_STORY_INDEX) ?: 0)
+        viewModel.getTagList(arguments?.getInt(ARGS_STORY_INDEX) ?: 0)
     }
 
     private fun setupTagList() {
         viewModel.tagList.observe(viewLifecycleOwner) { tagList ->
-            Timber.d("submit list : $tagList")
+            if (tagList.isEmpty()) {
+                binding.tvTagNullDescription.visibility = View.VISIBLE
+                return@observe
+            }
             tagAdapter?.submitList(tagList)
         }
     }
@@ -46,12 +48,12 @@ class TagDialogFragment :
     }
 
     companion object {
-        private const val KEY_STORY_INDEX = "KeyStoryIndex"
+        private const val ARGS_STORY_INDEX = "KeyStoryIndex"
 
         @JvmStatic
         fun newInstance(storyIndex: Int) = TagDialogFragment().apply {
             val args = Bundle()
-            args.putInt(KEY_STORY_INDEX, storyIndex)
+            args.putInt(ARGS_STORY_INDEX, storyIndex)
             arguments = args
         }
     }

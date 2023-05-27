@@ -20,6 +20,7 @@
     <!-- tag -->
     <string name="tag_title">이 스토리에 태그된 대상</string>
     <string name="tag_member_follow">팔로우</string>
+    <string name="tag_null_description">태그된 대상이 없습니다.</string>
 
     <!-- dm -->
     <string name="gosopt_cds_app1">gosopt_cds_app1</string>

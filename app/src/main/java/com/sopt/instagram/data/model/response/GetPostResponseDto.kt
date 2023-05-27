@@ -1,6 +1,7 @@
 package com.sopt.instagram.data.model.response
 
 import com.sopt.instagram.domain.entity.Post
+import com.sopt.instagram.util.getStoryState
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -25,9 +26,8 @@ data class GetPostResponseDto(
         memberId = memberId,
         memberImageUrl = memberImageUrl,
         memberName = memberName,
-        isSpecial = isSpecial,
-        storyExists = storyExists,
         content = content,
         imageUrlList = imageUrlList,
+        storyState = getStoryState(storyExists, isSpecial),
     )
 }

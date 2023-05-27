@@ -34,13 +34,9 @@ class MemberStoryViewModel @Inject constructor(
 
     val currentStory = MutableLiveData<Story>()
 
-    init {
-        getStory()
-    }
-
-    private fun getStory() {
+    fun getStory(memberId: Int) {
         viewModelScope.launch {
-            storyRepository.getMemberStory(3)
+            storyRepository.getMemberStory(memberId)
                 .onSuccess { stories ->
                     Timber.d("GET MEMBER STORY SUCCESS : $stories")
                     _storyList.value = stories

@@ -28,31 +28,23 @@ class MemberStoryFragment :
     private val storyIndex
         get() = requireNotNull(_storyIndex)
 
-    private val progressBars: MutableList<View> = mutableListOf()
+    private var progressBars: MutableList<View>? = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.avm = activityViewModel
         binding.vm = viewModel
 
-        getIndexStory()
-        initStatusBarColor()
+        getBundleArgs()
         setupStoryState()
         initStoryTagBtnClickListener()
     }
 
-    private fun getIndexStory() {
+    private fun getBundleArgs() {
         arguments ?: return
-        _storyIndex = arguments?.getInt(KEY_INDEX_STORY)
+        viewModel.getStory(arguments?.getInt(ARGS_MEMBER_ID) ?: 3)
+        _storyIndex = arguments?.getInt(ARGS_INDEX_STORY)
         binding.index = _storyIndex
-    }
-
-    private fun initStatusBarColor() {
-        with(requireActivity()) {
-            window.statusBarColor = getColor(R.color.black)
-            // TODO: use WindowInsetsController instead of systemUiVisibility
-            window.decorView.systemUiVisibility = 0
-        }
     }
 
     private fun setupStoryState() {
@@ -88,7 +80,7 @@ class MemberStoryFragment :
 
     private fun setProgressBar() {
         for (i in 1..viewModel.storyList.size) {
-            progressBars.add(
+            progressBars?.add(
                 layoutInflater.inflate(
                     R.layout.view_story_progress_bar,
                     binding.layoutStoryProgressBar,
@@ -117,21 +109,19 @@ class MemberStoryFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         _storyIndex = null
-        with(requireActivity()) {
-            window.statusBarColor = getColor(R.color.white)
-            // TODO: use WindowInsetsController instead of systemUiVisibility
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
+        progressBars = null
     }
 
     companion object {
-        private const val KEY_INDEX_STORY = "IndexStory"
+        private const val ARGS_INDEX_STORY = "IndexStory"
+        private const val ARGS_MEMBER_ID = "MemberId"
         private const val TAG_DIALOG = "TagDialog"
 
         @JvmStatic
-        fun newInstance(index: Int) = MemberStoryFragment().apply {
+        fun newInstance(index: Int, memberId: Int) = MemberStoryFragment().apply {
             val args = Bundle()
-            args.putInt(KEY_INDEX_STORY, index)
+            args.putInt(ARGS_INDEX_STORY, index)
+            args.putInt(ARGS_MEMBER_ID, memberId)
             arguments = args
         }
     }

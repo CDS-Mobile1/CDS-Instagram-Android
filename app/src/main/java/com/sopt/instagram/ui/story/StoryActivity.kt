@@ -18,13 +18,19 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initStatusBarColor()
         getIntentData()
         initViewPager()
         setCurrentMember()
         setupStoryUiState()
     }
 
-    // TODO: 멤버 리스트 잘 받아오는지 테스트
+    private fun initStatusBarColor() {
+        window.statusBarColor = getColor(com.sopt.instagram.R.color.black)
+        // TODO: use WindowInsetsController instead of systemUiVisibility
+        window.decorView.systemUiVisibility = 0
+    }
+
     private fun getIntentData() {
         val memberList = intent.getSerializableExtra(EXTRA_MEMBER_LIST)
         try {
@@ -39,6 +45,7 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
             vpStory.adapter = StoryAdapter(
                 fragmentActivity = this@StoryActivity,
                 storyListSize = viewModel.memberList.size,
+                memberList = viewModel.memberList
             )
             vpStory.setPageTransformer(CubeOutRotationTransformer())
             vpStory.isUserInputEnabled = false
@@ -60,6 +67,13 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
                 is Finish -> finish()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        window.statusBarColor = getColor(com.sopt.instagram.R.color.white)
+        // TODO: use WindowInsetsController instead of systemUiVisibility
+        window.decorView.systemUiVisibility = android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
     }
 
     companion object {
