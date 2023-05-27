@@ -56,7 +56,7 @@
 - 기본적인 ktlint 문법 준수
 <br>
 
-## PACKAGE CONVENTION
+## [PACKAGE CONVENTION](https://www.notion.so/go-sopt/Package-Convention-a4efaba8cf494d9d8d4104519995d885)
 ```
 📦java.com.keyneez 
  ┣ 📂data
@@ -82,6 +82,6 @@
 ```
 <br>
 
-### [▶ CHECK THE DEMO VIDEO!](https://drive.google.com/file/d/1Ff8ykYlBIxgGEHCJCiTpo6hvjLybWN0Z/view?usp=sharing)
+### [▶ CHECK THE DEMO VIDEO!](https://drive.google.com/file/d/1rSUxdstMffZxhTttoElkqg1PwbBRfklY/view?usp=sharing)
 
 <br>
