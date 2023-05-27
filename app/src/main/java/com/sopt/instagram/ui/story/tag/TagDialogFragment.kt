@@ -35,7 +35,10 @@ class TagDialogFragment :
 
     private fun setupTagList() {
         viewModel.tagList.observe(viewLifecycleOwner) { tagList ->
-            Timber.d("submit list : $tagList")
+            if (tagList.isEmpty()) {
+                binding.tvTagNullDescription.visibility = View.VISIBLE
+                return@observe
+            }
             tagAdapter?.submitList(tagList)
         }
     }
