@@ -9,7 +9,6 @@ import com.sopt.instagram.util.UiState.Error
 import com.sopt.instagram.util.UiState.Failure
 import com.sopt.instagram.util.UiState.Success
 import com.sopt.instagram.util.binding.BindingFragment
-import com.sopt.instagram.util.extension.showSnackbar
 import com.sopt.instagram.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 

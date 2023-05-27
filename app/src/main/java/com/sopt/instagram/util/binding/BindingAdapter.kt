@@ -10,9 +10,9 @@ import coil.transform.RoundedCornersTransformation
 import com.sopt.instagram.R
 import com.sopt.instagram.domain.entity.type.StoryState
 import com.sopt.instagram.domain.entity.type.StoryState.DEFAULT
+import com.sopt.instagram.domain.entity.type.StoryState.NONE
 import com.sopt.instagram.domain.entity.type.StoryState.READ
 import com.sopt.instagram.domain.entity.type.StoryState.SPECIAL
-import com.sopt.instagram.domain.entity.type.StoryState.NONE
 import com.sopt.instagram.util.extension.toPx
 
 object BindingAdapter {
