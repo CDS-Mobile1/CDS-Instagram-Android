@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Toolbar
+                <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar_dm"
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize"
@@ -33,62 +33,59 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageButton
-                        android:id="@+id/btn_dm_back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="24dp"
-                        android:background="@null"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_back" />
-
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_home_searchbar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center">
+                        android:id="@+id/layout_dm_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/btn_dm_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:background="@null"
+                            android:padding="12dp"
+                            android:src="@drawable/ic_back"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_dm_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="56dp"
-                            android:layout_marginStart="-29dp"
+                            android:layout_marginStart="24dp"
                             android:background="@null"
+                            android:fontFamily="@font/font_roboto_bold"
                             android:text="@string/gosopt_cds_app1"
                             android:textSize="26sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/btn_dm_back"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
                             android:id="@+id/iv_dm_vector"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginTop="13dp"
-                            android:background="@drawable/ic_vector"
-                            android:contentDescription="@null"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="1dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginStart="6dp"
+                            android:src="@drawable/ic_vector"
                             app:layout_constraintStart_toEndOf="@+id/tv_dm_title"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
-                        android:id="@+id/iv_dm_newdm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="20dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="1dp"
-                        android:src="@drawable/ic_newdm" />
-                </Toolbar>
+                        <ImageView
+                            android:id="@+id/iv_dm_new_dm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_dm_new_dm" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.Toolbar>
 
                 <ImageView
                     android:id="@+id/iv_dm_search"

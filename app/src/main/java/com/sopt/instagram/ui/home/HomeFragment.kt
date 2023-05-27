@@ -9,6 +9,7 @@ import com.sopt.instagram.util.UiState.Error
 import com.sopt.instagram.util.UiState.Failure
 import com.sopt.instagram.util.UiState.Success
 import com.sopt.instagram.util.binding.BindingFragment
+import com.sopt.instagram.util.extension.showSnackbar
 import com.sopt.instagram.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,13 +31,15 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun initAdapter() {
         postAdapter = PostAdapter()
         storyProfileAdapter = StoryProfileAdapter()
+
+        binding.rvHomePost.adapter = postAdapter
+        binding.rvHomeStory.adapter = storyProfileAdapter
     }
 
     private fun setupGetPostListState() {
         viewModel.getPostListState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Success -> {
-                    binding.rvHomePost.adapter = postAdapter
                     postAdapter?.submitList(viewModel.postList.value)
                 }
 
@@ -55,7 +58,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         viewModel.getFriendStoriesListState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is Success -> {
-                    binding.rvHomeStory.adapter = storyProfileAdapter
                     storyProfileAdapter?.submitList(viewModel.storyProfileList.value)
                 }
 

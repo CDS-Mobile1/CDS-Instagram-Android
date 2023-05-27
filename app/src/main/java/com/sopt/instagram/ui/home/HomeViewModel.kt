@@ -46,7 +46,7 @@ class HomeViewModel @Inject constructor(
                 .onSuccess { response ->
                     _postList.value = response
                     _getPostListState.value = UiState.Success
-                    Timber.tag("getPostListSuccess").d(response?.toString())
+                    Timber.tag("getPostListSuccess").d("$response")
                 }
                 .onFailure {
                     _getPostListState.value = UiState.Failure(null)

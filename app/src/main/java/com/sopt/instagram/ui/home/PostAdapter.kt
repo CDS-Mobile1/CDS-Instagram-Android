@@ -76,7 +76,7 @@ class PostAdapter : ListAdapter<Post, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            VIEW_TYPE_POST -> PostAdapter.PostViewHolder(
+            VIEW_TYPE_POST -> PostViewHolder(
                 ItemPostBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -102,9 +102,11 @@ class PostAdapter : ListAdapter<Post, RecyclerView.ViewHolder>(diffUtil) {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is PostAdapter.PostViewHolder) {
+        if (holder is PostViewHolder) {
             holder.onBindPost(getItem(position))
-        } else if (holder is RecommendFriendViewHolder) holder.onBindRecommendFriend()
+        } else if (holder is RecommendFriendViewHolder) {
+            holder.onBindRecommendFriend()
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
