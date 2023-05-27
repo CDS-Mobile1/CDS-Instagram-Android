@@ -82,13 +82,6 @@
 ```
 <br>
 
-## DEMO VIDEO
-### ① Main & DM & New Post
-https://github.com/CDS-Mobile1/CDS-Instagram-Android/assets/70993562/f64e92aa-44a9-472a-9787-5581b873f466
-
-<br>
-
-### ② Story
-https://github.com/CDS-Mobile1/CDS-Instagram-Android/assets/70993562/5f7829f3-ddfe-4d0b-926b-4e57ff4070d5
+### [DEMO VIDEO](https://drive.google.com/file/d/1Ff8ykYlBIxgGEHCJCiTpo6hvjLybWN0Z/view?usp=sharing)
 
 <br>
