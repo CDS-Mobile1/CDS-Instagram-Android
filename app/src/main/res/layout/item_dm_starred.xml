@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/layout_story"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_dm_starred"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp">
 
-
-        <ImageButton
-            android:id="@+id/btn_dm_starred_profile"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:background="@null"
-            android:contentDescription="@null"
-            android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1"
+        <View
+            android:id="@+id/view_dm_starred_stroke"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_story_profile_default"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_dm_starred_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_gray3_fill_oval"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/view_dm_starred_stroke"
+            app:layout_constraintEnd_toEndOf="@id/view_dm_starred_stroke"
+            app:layout_constraintStart_toStartOf="@id/view_dm_starred_stroke"
+            app:layout_constraintTop_toTopOf="@id/view_dm_starred_stroke" />
 
         <TextView
             android:id="@+id/tv_dm_starred_name"
-            android:layout_width="wrap_content"
+            style="@style/AndKorBody5"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
             android:gravity="center"
-            android:singleLine="false"
+            android:maxLines="1"
             android:textColor="@color/gray1"
-            android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btn_dm_starred_profile"
-            app:layout_constraintStart_toStartOf="@+id/btn_dm_starred_profile"
-            app:layout_constraintTop_toBottomOf="@+id/btn_dm_starred_profile"
-            tools:text="hanyee" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_dm_starred_stroke"
+            tools:text="minjoooo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

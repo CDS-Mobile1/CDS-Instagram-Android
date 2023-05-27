@@ -19,14 +19,14 @@
 
         <View
             android:id="@+id/view_story_item_stroke"
+            setStoryProfileStroke="@{data.storyState}"
             android:layout_width="72dp"
             android:layout_height="0dp"
-            setStoryProfileStroke="@{data.storyState}"
-            tools:background="@drawable/bg_story_profile_default"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/bg_story_profile_default" />
 
         <ImageView
             android:id="@+id/iv_story_item_profile"
@@ -34,8 +34,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="6dp"
-            android:scaleType="centerCrop"
             android:background="@drawable/shape_gray3_fill_oval"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@id/view_story_item_stroke"
             app:layout_constraintEnd_toEndOf="@id/view_story_item_stroke"
             app:layout_constraintStart_toStartOf="@id/view_story_item_stroke"
@@ -49,6 +49,7 @@
             android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@{data.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
