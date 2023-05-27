@@ -45,6 +45,7 @@ class StoryActivity : BindingActivity<ActivityStoryBinding>(R.layout.activity_st
             vpStory.adapter = StoryAdapter(
                 fragmentActivity = this@StoryActivity,
                 storyListSize = viewModel.memberList.size,
+                memberList = viewModel.memberList
             )
             vpStory.setPageTransformer(CubeOutRotationTransformer())
             vpStory.isUserInputEnabled = false

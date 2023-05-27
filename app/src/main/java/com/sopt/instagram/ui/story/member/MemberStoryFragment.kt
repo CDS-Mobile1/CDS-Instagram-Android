@@ -35,14 +35,15 @@ class MemberStoryFragment :
         binding.avm = activityViewModel
         binding.vm = viewModel
 
-        getIndexStory()
+        getBundleArgs()
         setupStoryState()
         initStoryTagBtnClickListener()
     }
 
-    private fun getIndexStory() {
+    private fun getBundleArgs() {
         arguments ?: return
-        _storyIndex = arguments?.getInt(KEY_INDEX_STORY)
+        viewModel.getStory(arguments?.getInt(ARGS_MEMBER_ID) ?: 3)
+        _storyIndex = arguments?.getInt(ARGS_INDEX_STORY)
         binding.index = _storyIndex
     }
 
@@ -112,13 +113,15 @@ class MemberStoryFragment :
     }
 
     companion object {
-        private const val KEY_INDEX_STORY = "IndexStory"
+        private const val ARGS_INDEX_STORY = "IndexStory"
+        private const val ARGS_MEMBER_ID = "MemberId"
         private const val TAG_DIALOG = "TagDialog"
 
         @JvmStatic
-        fun newInstance(index: Int) = MemberStoryFragment().apply {
+        fun newInstance(index: Int, memberId: Int) = MemberStoryFragment().apply {
             val args = Bundle()
-            args.putInt(KEY_INDEX_STORY, index)
+            args.putInt(ARGS_INDEX_STORY, index)
+            args.putInt(ARGS_MEMBER_ID, memberId)
             arguments = args
         }
     }
