@@ -40,13 +40,13 @@
 ```
 <br>
 
-## ISSUE CONVENTION
+## [ISSUE CONVENTION](https://www.notion.so/go-sopt/Github-Convention-d8269c819fed4aea868e6c5e4e7abdec?pvs=4#5bc51a1fa76f4d3790305d3af25e013c)
 ```
 [작업유형] 뷰이름 / 작업내용
 ```
 <br>
 
-## PR CONVENTION
+## [PR CONVENTION](https://www.notion.so/go-sopt/Github-Convention-d8269c819fed4aea868e6c5e4e7abdec?pvs=4#0be1be41c4204520b17f97fef4e78261)
 ```
 [작업유형/#이슈번호] 뷰이름 / 작업내용
 ```
@@ -82,6 +82,6 @@
 ```
 <br>
 
-### [DEMO VIDEO](https://drive.google.com/file/d/1Ff8ykYlBIxgGEHCJCiTpo6hvjLybWN0Z/view?usp=sharing)
+### [▶ CHECK THE DEMO VIDEO!](https://drive.google.com/file/d/1Ff8ykYlBIxgGEHCJCiTpo6hvjLybWN0Z/view?usp=sharing)
 
 <br>
