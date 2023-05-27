@@ -82,6 +82,6 @@
 ```
 <br>
 
-### [▶ CHECK THE DEMO VIDEO!](https://drive.google.com/file/d/1rSUxdstMffZxhTttoElkqg1PwbBRfklY/view?usp=sharing)
+### [▶ CHECK THE DEMO VIDEO!](https://drive.google.com/file/d/1B9XvQZRN7R1qh3Qe7D9GeHvu9YcFtH7L/view?usp=sharing)
 
 <br>
